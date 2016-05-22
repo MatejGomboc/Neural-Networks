@@ -1,3 +1,3 @@
 # Neural-Networks
-generic neural network stub
-training using genetic algorithm
+* generic neural network stub
+* training using genetic algorithm
