@@ -13,7 +13,7 @@ int main(void)
 	cout << rnd.random_double() << endl;
 	cout << rnd.random_double() << endl;
 	cout << rnd.random_double() << endl;
-    cout << rnd.random_double() << endl;
+    	cout << rnd.random_double() << endl;
 	cout << rnd.random_double() << endl;
 
 	rand_gen rnd2;
@@ -33,7 +33,7 @@ int main(void)
 
 	population pop(2, 3, 10, 3, par);
 
-    cout << "loaded" << endl;
+    	cout << "loaded" << endl;
 
 	system("PAUSE");
 
