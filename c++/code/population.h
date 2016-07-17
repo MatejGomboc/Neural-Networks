@@ -25,7 +25,14 @@ namespace neural_networks
 	{
 	public:
 		t_mut_params mutation_params; // mutation parameters
-		std::vector<member> members; // array of population members
+		std::vector<member> members;  // array of population members
+		
+		double WorstFitness;
+		double AverageFitness;
+
+		std::vector<member>::size_type indxFittestMember;
+		std::vector<member>::size_type indxWeakestMember;
+
 	public:
 		population(std::vector<member>::size_type N_members, std::vector<double>::size_type N_input_variables, std::vector<neuron>::size_type N_neurons, std::vector<double>::size_type N_output_variables, t_mut_params Mutation_params);
 		~population(void);
@@ -35,6 +42,7 @@ namespace neural_networks
 		std::vector<member>::size_type roulette_wheel(void); // roulette wheel selection algorithm
 		std::vector<member>::size_type roulette_wheel(std::vector<member>::size_type dropped_memb_indx); // roulette wheel selection algorithm
 		//std::vector<member>::size_type roulette_wheel(std::vector<std::vector<member>::size_type> dropped_memb_indx); // roulette wheel selection algorithm
+		virtual void CalculateBestWorstAverageIndx(void); // calculate best, worst and average fitnes and indices of fittest and weakest member
 	private:
 		//bool is_in_array(std::vector<member>::size_type indx, std::vector<std::vector<member>::size_type> indx_array); // check if indx is in indx_array
 	};

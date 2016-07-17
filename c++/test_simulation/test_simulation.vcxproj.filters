@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\simulation">
+      <UniqueIdentifier>{2259df07-65b1-46f4-8182-88e01626dfcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\simulation">
+      <UniqueIdentifier>{411cc651-0d92-40f4-8f54-216118dac07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\neural networks">
+      <UniqueIdentifier>{24d17c63-9d70-4728-b716-7eafde7d3b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\neural networks">
+      <UniqueIdentifier>{fede90bf-982f-4e8b-9761-e4155c4d0512}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="test_simulation.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="params.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CParams.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimer.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\member.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\network.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\neuron.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\output_node.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\population.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\rand_gen.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
+    <ClInclude Include="C2DMatrix.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SPoint.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="SVector2D.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CMineSweeper.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CController.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CSweeperPopulation.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_simulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CParams.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimer.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\member.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\network.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\neuron.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\output_node.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\population.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\rand_gen.cpp">
+      <Filter>Source Files\neural networks</Filter>
+    </ClCompile>
+    <ClCompile Include="C2DMatrix.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CMinesweeper.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CController.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CSweeperPopulation.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="test_simulation.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

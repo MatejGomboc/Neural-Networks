@@ -38,6 +38,12 @@ neural_networks::population::population(std::vector<member>::size_type N_members
 	}
 
 	mutation_params = Mutation_params;
+
+	WorstFitness = 0;
+	AverageFitness = 0;
+
+	indxFittestMember = 0;
+	indxWeakestMember = 0;
 }
 
 
@@ -250,3 +256,33 @@ std::vector<member>::size_type population::roulette_wheel(std::vector<member>::s
 //		else return false;
 //	}
 //}
+
+
+void population::CalculateBestWorstAverageIndx(void)
+{
+	double HighestSoFar = 0;
+	double LowestSoFar = 2.0;
+	double TotalFitness = 0.0;
+	
+	for (std::vector<member>::size_type i = 0; i < members.size(); ++i)
+	{
+		//update fittest if necessary
+		if (members[i].fitness > HighestSoFar)
+		{
+			HighestSoFar = members[i].fitness;
+			indxFittestMember = i;
+		}
+		
+		//update worst if necessary
+		if (members[i].fitness < LowestSoFar)
+		{
+			LowestSoFar = members[i].fitness;
+			WorstFitness = members[i].fitness;
+			indxWeakestMember = i;
+		}
+		
+		TotalFitness += members[i].fitness;
+	}
+	
+	AverageFitness = TotalFitness / (double)members.size();
+}
