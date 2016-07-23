@@ -1,4 +1,4 @@
-﻿Build started 17.7.2016 15:18:29.
+﻿Build started 23.7.2016 14:26:54.
      1>Project "C:\Users\user\Desktop\Neural-Networks\c++\test_simulation\test_simulation.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Release\test_simulation.lastbuildstate".
@@ -25,9 +25,9 @@
          CParams.cpp
          CTimer.cpp
          CSweeperPopulation.cpp
-     1>CSweeperPopulation.cpp(25): error C2065: 'member' : undeclared identifier
-     1>CSweeperPopulation.cpp(25): error C2955: 'std::vector' : use of class template requires template argument list
-                 D:\Program Files\Microsoft Visual Studio 10.0\VC\include\vector(480) : see declaration of 'std::vector'
+     1>CSweeperPopulation.cpp(27): error C2440: 'static_cast' : cannot convert from 'neural_networks::member' to 'CMineSweeper'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>CSweeperPopulation.cpp(27): error C2512: 'CMineSweeper' : no appropriate default constructor available
          test_simulation.cpp
      1>test_simulation.cpp(161): error C2664: 'CController::CController(const CController &)' : cannot convert parameter 1 from 'HWND' to 'const CController &'
                  Reason: cannot convert from 'HWND' to 'const CController'
@@ -40,4 +40,4 @@
 
 Build FAILED.
 
-Time Elapsed 00:00:12.98
+Time Elapsed 00:00:28.93

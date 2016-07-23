@@ -95,6 +95,9 @@
     <ClInclude Include="CSweeperPopulation.h">
       <Filter>Header Files\simulation</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\ptr_vector.h">
+      <Filter>Header Files\neural networks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

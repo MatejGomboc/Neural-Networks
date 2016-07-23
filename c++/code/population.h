@@ -2,8 +2,9 @@
 
 #include "member.h"
 #include "neuron.h"
-#include <vector>
+#include "ptr_vector.h"
 
+using namespace stdx;
 
 namespace neural_networks
 {
@@ -25,7 +26,7 @@ namespace neural_networks
 	{
 	public:
 		t_mut_params mutation_params; // mutation parameters
-		std::vector<member> members;  // array of population members
+		pt_vector<member> members;  // array of population members
 		
 		double WorstFitness;
 		double AverageFitness;

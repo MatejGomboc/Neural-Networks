@@ -88,6 +88,7 @@
     <ClInclude Include="..\code\neuron.h" />
     <ClInclude Include="..\code\output_node.h" />
     <ClInclude Include="..\code\population.h" />
+    <ClInclude Include="..\code\ptr_vector.h" />
     <ClInclude Include="..\code\rand_gen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

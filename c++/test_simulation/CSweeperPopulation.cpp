@@ -24,6 +24,6 @@ void CSweeperPopulation::CalculateBestWorstAverageIndxScore(void)
 {
 	for (std::vector<neural_networks::member>::size_type i = 0; i < members.size(); ++i)
 	{
-		CMineSweeper sweeper = (CMineSweeper)members[i];
+		CMineSweeper sweeper = static_cast<CMineSweeper>(members[i]);
 	}
 }

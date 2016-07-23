@@ -4,9 +4,9 @@
 #include "neuron.h"
 #include "output_node.h"
 #include "rand_gen.h"
-#include <vector>
-#include <algorithm>
+#include "ptr_vector.h"
 
+using namespace stdx;
 
 neural_networks::population::population(std::vector<member>::size_type N_members, std::vector<double>::size_type N_input_variables, std::vector<neuron>::size_type N_neurons, std::vector<double>::size_type N_output_variables, t_mut_params Mutation_params)
 {

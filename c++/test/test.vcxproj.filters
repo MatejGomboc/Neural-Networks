@@ -56,5 +56,8 @@
     <ClInclude Include="..\code\rand_gen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\code\ptr_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
