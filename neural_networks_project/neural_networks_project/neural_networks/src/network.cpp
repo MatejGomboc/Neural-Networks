@@ -1,56 +1,66 @@
 #include "network.h"
 #include "neuron.h"
 #include "output_node.h"
+#include <vector>
 
-
-neural_networks::network::network(std::vector<double>::size_type N_inputs, std::vector<neuron>::size_type N_neurons, std::vector<output_node>::size_type N_outputs)
+namespace neural_networks
 {
-	if (N_inputs <= 0) throw "Zero neural network inputs.";
-	if (N_outputs <= 0) throw "Zero neural network outputs.";
-	if (N_neurons <= 0) throw "Zero neurons in neural network.";
-
-	inputs.resize(N_inputs);
-	outputs.resize((std::vector<double>::size_type)N_outputs);
-
-	neurons.reserve(N_neurons);
-
-	for (std::vector<neuron>::size_type i = 0; i != N_neurons; i++)
+	Network::Network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs)
 	{
-		neurons.push_back(neuron(N_neurons+N_inputs));
+		if (N_inputs <= 0) throw "Invalid number of neural network inputs.";
+		if (N_outputs <= 0) throw "Invalid number of neural network outputs.";
+		if (N_neurons <= 0) throw "Invalid number of neurons in neural network.";
+
+		m_dInputs.resize(N_inputs);
+		for(unsigned long i = 0; i < m_dInputs.size(); i++)
+		{
+			m_dInputs[i] = 0.0;
+		}
+
+		m_dOutputs.resize(N_outputs);
+		for(unsigned long i = 0; i < m_dOutputs.size(); i++)
+		{
+			m_dOutputs[i] = 0.0;
+		}
+
+		m_neurons.reserve(N_neurons);
+		for (unsigned long i = 0; i < N_neurons; i++)
+		{
+			m_neurons.push_back(Neuron(N_neurons + N_inputs));
+		}
+
+		m_output_nodes.reserve(N_outputs);
+		for (unsigned long i = 0; i < N_outputs; i++)
+		{
+			m_output_nodes.push_back(Output_node(N_neurons));
+		}
 	}
 
-	output_nodes.reserve(N_outputs);
 
-	for (std::vector<output_node>::size_type i = 0; i != N_outputs; i++)
+	Network::~Network(void)
 	{
-		output_nodes.push_back(output_node(N_neurons));
-	}
-}
-
-
-neural_networks::network::~network(void)
-{
-	inputs.clear();
-	outputs.clear();
-	neurons.clear();
-	output_nodes.clear();
-}
-
-
-void neural_networks::network::calculate(void)
-{
-	for(std::vector<neuron>::size_type i = 0; i != neurons.size(); i++)
-	{
-		neurons[i].calculate(neurons, inputs);
+		m_dInputs.clear();
+		m_dOutputs.clear();
+		m_neurons.clear();
+		m_output_nodes.clear();
 	}
 
-	for(std::vector<neuron>::size_type i = 0; i != neurons.size(); i++)
-	{
-		neurons[i].propagate();
-	}
 
-	for(std::vector<output_node>::size_type i = 0; i != output_nodes.size(); i++)
+	void Network::calculate(void)
 	{
-		outputs[i] = output_nodes[i].calculate(neurons);
+		for(unsigned long i = 0; i < m_neurons.size(); i++)
+		{
+			m_neurons[i].calculate(m_neurons, m_dInputs);
+		}
+
+		for(unsigned long i = 0; i < m_neurons.size(); i++)
+		{
+			m_neurons[i].propagate();
+		}
+
+		for(unsigned long i = 0; i < m_output_nodes.size(); i++)
+		{
+			m_dOutputs[i] = m_output_nodes[i].calculate(m_neurons);
+		}
 	}
-}
+};

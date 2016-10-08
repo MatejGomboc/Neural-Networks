@@ -1,53 +1,39 @@
 #include "rand_gen.h"
+#include "constants.h"
 #include <random>
 
-using namespace neural_networks;
-
-rand_gen::rand_gen(void)
+namespace neural_networks
 {
-}
+	static std::random_device generator; // Use a hardware entropy source if available, otherwise use PRNG
+
+	// return random double value between max and min double value that can be generated
+	double random_double(void)
+	{
+		std::uniform_real_distribution<double> distribution(min_double, max_double);
+		return distribution(generator);
+	}
 
 
-rand_gen::~rand_gen(void)
-{
-}
+	// return random double value between given max and min double values
+	double random_double(const double min_val, const double max_val)
+	{
+		std::uniform_real_distribution<double> distribution(min_val, max_val);
+		return distribution(generator);
+	}
 
 
-double rand_gen::clamp_value(double value)
-{
-	if (value >= max_double) return max_double;
-	else if (value <= min_double) return min_double;
-	else return value;
-}
+	// return random int value between max and min int value that can be generated
+	int random_int(void)
+	{
+		std::uniform_int_distribution<int> distribution(min_int, max_int);
+		return distribution(generator);
+	}
 
 
-int rand_gen::clamp_value(int value)
-{
-	if (value >= max_int) return max_int;
-	else if (value <= min_int) return min_int;
-	else return value;
-}
-
-
-double rand_gen::random_double(void)
-{
-    return (min_double + ((double)rand() / (double)RAND_MAX) * (max_double - min_double));
-}
-
-
-double rand_gen::random_double(double min_val, double max_val)
-{
-    return (min_val + ((double)rand() / (double)RAND_MAX) * (max_val - min_val));
-}
-
-
-int rand_gen::random_int(void)
-{
-    return (min_int + (rand() / RAND_MAX) * (max_int - min_int));
-}
-
-
-int rand_gen::random_int(int min_val, int max_val)
-{
-    return (min_val + (rand() / RAND_MAX) * (max_val - min_val));
-}
+	// return random int value between given max and min int values
+	int random_int(const int min_val, const int max_val)
+	{
+		std::uniform_int_distribution<int> distribution(min_val, max_val);
+		return distribution(generator);
+	}
+};

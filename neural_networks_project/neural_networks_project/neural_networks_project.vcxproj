@@ -55,6 +55,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>2</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -77,6 +78,8 @@
   <ItemGroup>
     <ClInclude Include="main\incl\stdafx.h" />
     <ClInclude Include="main\incl\targetver.h" />
+    <ClInclude Include="neural_networks\incl\constants.h" />
+    <ClInclude Include="neural_networks\incl\debug.h" />
     <ClInclude Include="neural_networks\incl\member.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -86,14 +89,14 @@
     <ClInclude Include="neural_networks\incl\population.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="neural_networks\incl\ptr_vector.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="neural_networks\incl\rand_gen.h" />
+    <ClInclude Include="neural_networks\incl\util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\src\main.cpp" />
     <ClCompile Include="main\src\stdafx.cpp" />
+    <ClCompile Include="neural_networks\src\constans.cpp" />
+    <ClCompile Include="neural_networks\src\debug.cpp" />
     <ClCompile Include="neural_networks\src\member.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -104,6 +107,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="neural_networks\src\rand_gen.cpp" />
+    <ClCompile Include="neural_networks\src\util.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

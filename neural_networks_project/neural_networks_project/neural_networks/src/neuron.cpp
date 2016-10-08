@@ -1,67 +1,74 @@
 #include "neuron.h"
 #include "rand_gen.h"
+
 #include <vector>
-#include <math.h>
+#include <cmath>
 
-
-neural_networks::neuron::neuron(std::vector<double>::size_type N_weights)
+namespace neural_networks
 {
-	// N_weights = N_neurons + N_inputs
-
-	if (N_weights <= 0) throw "Zero weights in this neuron.";
-
-	rand_gen Rand_gen;
-
-	output = Rand_gen.random_double(0.0, 1.0);
-	temp = Rand_gen.random_double(0.0, 1.0);
-
-	treshold = Rand_gen.random_double(0.0, (double)N_weights);
-	steepness = Rand_gen.random_double();
-	simetricity = Rand_gen.random_double(0.0, 1.0);
-
-	weights.reserve(N_weights);
-
-	for (std::vector<double>::size_type i = 0; i != N_weights; i++)
+	Neuron::Neuron(const unsigned long N_weights)
 	{
-		weights.push_back(Rand_gen.random_double(0.0, 1.0));
-	}
-}
+		// N_weights = N_neurons + N_inputs
 
+		if (N_weights <= 0) throw "Invalid number of weights in neuron.";
 
-neural_networks::neuron::~neuron(void)
-{
-	weights.clear();
-}
+		m_dOutput = 0.0; //random_double(0.0, 1.0);
+		m_dTemp = 0.0; //random_double(0.0, 1.0);
 
+		m_dTreshold = random_double(0.0, static_cast<double>(N_weights));
+		m_dSteepness = random_double();
+		m_dSimetricity = random_double(0.0, 1.0);
 
-void neural_networks::neuron::calculate(std::vector<neuron> neurons, std::vector<double> inputs)
-{
-	double summ = 0.0;
-	unsigned j = 0;
+		m_vdWeights.reserve(N_weights);
 
-	for(std::vector<double>::size_type i = 0; i != inputs.size(); i++)
-	{
-		summ += inputs[i] * weights[j];
-		j++;
+		for (unsigned long i = 0; i != N_weights; i++)
+		{
+			m_vdWeights.push_back(random_double(0.0, 1.0));
+		}
 	}
 
-	for(std::vector<neuron>::size_type i = 0; i != neurons.size(); i++)
+
+	Neuron::~Neuron(void)
 	{
-		summ += neurons[i].output * weights[j];
-		j++;
+		m_vdWeights.clear();
 	}
 
-	temp = activation_function(summ);
-}
+
+	 // calculate new output value and place it in temporal storage
+	void Neuron::calculate(const std::vector<Neuron> &neurons, const std::vector<double> &inputs)
+	{
+		// N_weights = N_neurons + N_inputs
+		if((neurons.size() + inputs.size()) != m_vdWeights.size()) throw "Number of inputs from network inputs and other neurons' outputs does not match the number of weights in neuron.";
+
+		double summ = 0.0;
+		unsigned long j = 0;
+
+		for(unsigned long i = 0; i != inputs.size(); i++)
+		{
+			summ += inputs[i] * m_vdWeights[j];
+			j++;
+		}
+
+		for(unsigned long i = 0; i != neurons.size(); i++)
+		{
+			summ += neurons[i].m_dOutput * m_vdWeights[j];
+			j++;
+		}
+
+		m_dTemp = activation_function(summ, m_dSteepness, m_dTreshold, m_dSimetricity);
+	}
 
 
-void neural_networks::neuron::propagate(void)
-{
-	output = temp;
-}
+	// place temporal storage of output value into current output value
+	void Neuron::propagate(void)
+	{
+		m_dOutput = m_dTemp;
+	}
 
 
-double neural_networks::neuron::activation_function(double summ)
-{
-	return (1.0 / pow((1.0 + exp(-steepness*(summ - treshold))), simetricity));
-}
+	// neuron's activation function
+	double const Neuron::activation_function(const double summ, const double steepness, const double treshold, const double simetricity)
+	{
+		return (1.0 / pow((1.0 + exp(-steepness*(summ - treshold))), simetricity));
+	}
+};

@@ -5,14 +5,14 @@
 
 namespace neural_networks
 {
-	class output_node
+	class Output_node
 	{
 	public:
-		std::vector<double> weights; // array of weights (0.0 - 1.0)
+		std::vector<double> m_vdWeights;// array of weights (0.0 - 1.0), N_weights = N_neurons
 	public:
-		output_node(std::vector<neuron>::size_type N_neurons);
-		~output_node(void);
-		double calculate(std::vector<neuron> neurons); // calculate output value from output values of neurons
+		Output_node(const unsigned long N_neurons);
+		~Output_node(void);
+		double calculate(const std::vector<Neuron> &neurons); // calculate new output value from outputs of neurons
 	};
 };
 

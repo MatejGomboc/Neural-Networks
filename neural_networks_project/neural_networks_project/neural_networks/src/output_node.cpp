@@ -4,35 +4,39 @@
 #include <vector>
 
 
-neural_networks::output_node::output_node(std::vector<neuron>::size_type N_neurons)
+namespace neural_networks
 {
-	if (N_neurons <= 0) throw "Zero neurons connected to output node.";
-
-	rand_gen Rand_gen;
-
-	weights.reserve(N_neurons);
-
-	for (std::vector<neuron>::size_type i = 0; i != N_neurons; i++)
+	Output_node::Output_node(const unsigned long N_Neurons)
 	{
-		weights.push_back(Rand_gen.random_double(0.0, 1.0));
-	}
-}
+		if (N_Neurons <= 0) throw "Zero neurons connected to output node.";
 
+		m_vdWeights.reserve(N_Neurons);
 
-neural_networks::output_node::~output_node(void)
-{
-	weights.clear();
-}
-
-
-double neural_networks::output_node::calculate(std::vector<neuron> neurons)
-{
-	double summ = 0.0; // (0.0 - N_neurons)
-
-	for(std::vector<neuron>::size_type i = 0; i != neurons.size(); i++)
-	{
-		summ += neurons[i].output * weights[i];
+		for (unsigned long i = 0; i != N_Neurons; i++)
+		{
+			m_vdWeights.push_back(random_double(0.0, 1.0));
+		}
 	}
 
-	return (summ / (double)neurons.size());
-}
+
+	Output_node::~Output_node(void)
+	{
+		m_vdWeights.clear();
+	}
+
+
+	 // calculate new output value from outputs of Neurons
+	double Output_node::calculate(const std::vector<Neuron> &neurons)
+	{
+		if(neurons.size() != m_vdWeights.size()) throw "Number of inputs from neurons' outputs does not match the number of weights in output node.";
+
+		double summ = 0.0; // (0.0 - N_Neurons)
+
+		for(unsigned long i = 0; i != neurons.size(); i++)
+		{
+			summ += neurons[i].m_dOutput * m_vdWeights[i];
+		}
+
+		return (summ / static_cast<double>(neurons.size()));
+	}
+};
