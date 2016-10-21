@@ -67,7 +67,7 @@ namespace neural_networks
 
 
 	// neuron's activation function
-	double const Neuron::activation_function(const double summ, const double steepness, const double treshold, const double simetricity)
+	double Neuron::activation_function(const double summ, const double steepness, const double treshold, const double simetricity)
 	{
 		return (1.0 / pow((1.0 + exp(-steepness*(summ - treshold))), simetricity));
 	}

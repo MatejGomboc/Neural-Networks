@@ -17,7 +17,7 @@ namespace neural_networks
 		Neuron(const unsigned long N_weights);
 		~Neuron(void);
 		void propagate(void); // place temporal storage of output value into current output value
-		void calculate(const std::vector<Neuron> &neurons, const std::vector<double> &inputs); // calculate new output value and place it in temporal storage
-		static double const Neuron::activation_function(const double summ, const double steepness, const double treshold, const double simetricity); // neuron's activation function
+		void calculate(const std::vector<Neuron>& neurons, const std::vector<double>& inputs); // calculate new output value and place it in temporal storage
+		static double activation_function(const double summ, const double steepness, const double treshold, const double simetricity); // neuron's activation function
 	};
 };
