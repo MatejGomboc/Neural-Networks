@@ -2,6 +2,7 @@
 
 #include <vector>
 
+
 namespace neural_networks
 {
 	class Neuron

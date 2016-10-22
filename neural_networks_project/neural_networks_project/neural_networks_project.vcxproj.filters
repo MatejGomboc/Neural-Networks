@@ -56,6 +56,9 @@
     <ClInclude Include="neural_networks\incl\debug.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
+    <ClInclude Include="neural_networks\incl\restricted.h">
+      <Filter>neural_networks\incl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="neural_networks\src\member.cpp">
@@ -89,6 +92,9 @@
       <Filter>neural_networks\src</Filter>
     </ClCompile>
     <ClCompile Include="neural_networks\src\debug.cpp">
+      <Filter>neural_networks\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\restricted.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
   </ItemGroup>

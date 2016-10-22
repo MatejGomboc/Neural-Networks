@@ -12,7 +12,7 @@ namespace neural_networks
 	public:
 		Output_node(const unsigned long N_neurons);
 		~Output_node(void);
-		double calculate(const std::vector<Neuron> &neurons); // calculate new output value from outputs of neurons
+		double calculate(const std::vector<Neuron>& neurons); // calculate new output value from outputs of neurons
 	};
 };
 

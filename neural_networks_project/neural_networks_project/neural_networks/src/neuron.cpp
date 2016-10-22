@@ -40,7 +40,7 @@ namespace neural_networks
 		// N_weights = N_neurons + N_inputs
 		if((neurons.size() + inputs.size()) != m_vdWeights.size()) throw "Number of inputs from network inputs and other neurons' outputs does not match the number of weights in neuron.";
 
-		double summ = 0.0;
+		double summ = 0.0;  // (0.0 - (N_neurons + N_inputs))
 		unsigned long j = 0;
 
 		for(unsigned long i = 0; i != inputs.size(); i++)
