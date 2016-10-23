@@ -5,22 +5,27 @@
 
 namespace neural_networks
 {
+	const double Network::inputMinValue = 0.0;
+	const double Network::inputMaxValue = 1.0;
+	const double Network::outputMinValue = 0.0;
+	const double Network::outputMaxValue = 1.0;
+
 	Network::Network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs)
 	{
 		if (N_inputs <= 0) throw "Invalid number of neural network inputs.";
 		if (N_outputs <= 0) throw "Invalid number of neural network outputs.";
 		if (N_neurons <= 0) throw "Invalid number of neurons in neural network.";
 
-		m_dInputs.resize(N_inputs);
-		for(unsigned long i = 0; i < m_dInputs.size(); i++)
+		m_dInputs.reserve(N_inputs);
+		for(unsigned long i = 0; i < N_inputs; i++)
 		{
-			m_dInputs[i] = 0.0;
+			m_dInputs.push_back(restricted<double>(0.0, inputMinValue, inputMaxValue));
 		}
 
-		m_dOutputs.resize(N_outputs);
-		for(unsigned long i = 0; i < m_dOutputs.size(); i++)
+		m_dOutputs.reserve(N_outputs);
+		for(unsigned long i = 0; i < N_outputs; i++)
 		{
-			m_dOutputs[i] = 0.0;
+			m_dOutputs.push_back(restricted<double>(0.0, outputMinValue, outputMaxValue));
 		}
 
 		m_neurons.reserve(N_neurons);

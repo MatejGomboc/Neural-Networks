@@ -6,6 +6,9 @@
 
 namespace neural_networks
 {
+	const double Output_node::weightMinValue = 0.0;
+	const double Output_node::weightMaxValue = 1.0;
+
 	Output_node::Output_node(const unsigned long N_neurons)
 	{
 		if (N_neurons <= 0) throw "Zero neurons connected to output node.";
@@ -14,7 +17,7 @@ namespace neural_networks
 
 		for (unsigned long i = 0; i != N_neurons; i++)
 		{
-			m_vdWeights.push_back(random_double(0.0, 1.0));
+			m_vdWeights.push_back(restricted<double>(random_double(0.0, 1.0), weightMinValue, weightMaxValue));
 		}
 	}
 
@@ -26,7 +29,7 @@ namespace neural_networks
 
 
 	 // calculate new output value from outputs of Neurons
-	double Output_node::calculate(const std::vector<Neuron> &neurons)
+	double Output_node::calculate(const std::vector<Neuron> &neurons) const
 	{
 		if(neurons.size() != m_vdWeights.size()) throw "Number of inputs from neurons' outputs does not match the number of weights in output node.";
 

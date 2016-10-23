@@ -1,12 +1,32 @@
 #include "neuron.h"
 #include "rand_gen.h"
+#include "constants.h"
 
 #include <vector>
 #include <cmath>
 
 namespace neural_networks
 {
-	Neuron::Neuron(const unsigned long N_weights)
+	const double Neuron::weightMinValue = 0.0;
+	const double Neuron::weightMaxValue = 1.0;
+
+	const double Neuron::outputMinValue = 0.0;
+	const double Neuron::outputMaxValue = 1.0;
+
+	const double Neuron::tresholdMinValue = 0.0;
+
+	const double Neuron::steepnessMinValue = min_double;
+	const double Neuron::steepnessMaxValue = max_double;
+
+	const double Neuron::simetricityMinValue = 0.0;
+	const double Neuron::simetricityMaxValue = 1.0;
+
+	Neuron::Neuron(const unsigned long N_weights) :
+		m_dOutput(outputMinValue, outputMaxValue), 
+		m_dTemp(outputMinValue, outputMaxValue),
+		m_dTreshold(tresholdMinValue, tresholdMinValue),
+		m_dSteepness(steepnessMinValue, steepnessMaxValue),
+		m_dSimetricity(simetricityMinValue, simetricityMaxValue)
 	{
 		// N_weights = N_neurons + N_inputs
 
@@ -15,6 +35,7 @@ namespace neural_networks
 		m_dOutput = 0.0; //random_double(0.0, 1.0);
 		m_dTemp = 0.0; //random_double(0.0, 1.0);
 
+		m_dTreshold.m_max = static_cast<double>(N_weights);
 		m_dTreshold = random_double(0.0, static_cast<double>(N_weights));
 		m_dSteepness = random_double();
 		m_dSimetricity = random_double(0.0, 1.0);
@@ -23,7 +44,7 @@ namespace neural_networks
 
 		for (unsigned long i = 0; i != N_weights; i++)
 		{
-			m_vdWeights.push_back(random_double(0.0, 1.0));
+			m_vdWeights.push_back(restricted<double>(random_double(0.0, 1.0), weightMinValue, weightMaxValue));
 		}
 	}
 
@@ -35,7 +56,7 @@ namespace neural_networks
 
 
 	 // calculate new output value and place it in temporal storage
-	void Neuron::calculate(const std::vector<Neuron> &neurons, const std::vector<double> &inputs)
+	void Neuron::calculate(const std::vector<Neuron> &neurons, const std::vector<restricted<double>> &inputs)
 	{
 		// N_weights = N_neurons + N_inputs
 		if((neurons.size() + inputs.size()) != m_vdWeights.size()) throw "Number of inputs from network inputs and other neurons' outputs does not match the number of weights in neuron.";

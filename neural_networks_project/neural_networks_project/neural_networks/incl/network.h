@@ -3,6 +3,7 @@
 #include "neuron.h"
 #include "output_node.h"
 #include <vector>
+#include "restricted.h"
 
 
 namespace neural_networks
@@ -10,8 +11,13 @@ namespace neural_networks
 	class Network
 	{
 	public:
-		std::vector<double> m_dInputs; // array of neural network inputs (0.0 - 1.0)
-		std::vector<double> m_dOutputs; // array of neural network outputs (0.0 - 1.0)
+		static const double inputMinValue;
+		static const double inputMaxValue;
+		static const double outputMinValue;
+		static const double outputMaxValue;
+	public:
+		std::vector<restricted<double>> m_dInputs; // array of neural network inputs (0.0 - 1.0)
+		std::vector<restricted<double>> m_dOutputs; // array of neural network outputs (0.0 - 1.0)
 		std::vector<Neuron> m_neurons; // array of neurons
 		std::vector<Output_node> m_output_nodes; // array of output nodes
 	public:
