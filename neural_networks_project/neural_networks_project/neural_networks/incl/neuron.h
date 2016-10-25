@@ -2,22 +2,13 @@
 
 #include <vector>
 #include "restricted.h"
+#include "IRestrictedRange.h"
 
 
 namespace neural_networks
 {
-	class Neuron
+	class Neuron : private IRestrictedRange<double>
 	{
-	public:
-		static const double weightMinValue;
-		static const double weightMaxValue;
-		static const double outputMinValue;
-		static const double outputMaxValue;
-		static const double tresholdMinValue;
-		static const double steepnessMinValue;
-		static const double steepnessMaxValue;
-		static const double simetricityMinValue;
-		static const double simetricityMaxValue;
 	public:
 		restricted<double> m_dOutput; // current output value (0.0 - 1.0)
 		std::vector<restricted<double>> m_vdWeights; // array of weights (0.0 - 1.0), N_weights = N_neurons + N_inputs

@@ -1,26 +1,13 @@
 #include "neuron.h"
 #include "rand_gen.h"
 #include "constants.h"
+#include "IRestrictedAccessor.h"
 
 #include <vector>
 #include <cmath>
 
 namespace neural_networks
 {
-	const double Neuron::weightMinValue = 0.0;
-	const double Neuron::weightMaxValue = 1.0;
-
-	const double Neuron::outputMinValue = 0.0;
-	const double Neuron::outputMaxValue = 1.0;
-
-	const double Neuron::tresholdMinValue = 0.0;
-
-	const double Neuron::steepnessMinValue = min_double;
-	const double Neuron::steepnessMaxValue = max_double;
-
-	const double Neuron::simetricityMinValue = 0.0;
-	const double Neuron::simetricityMaxValue = 1.0;
-
 	Neuron::Neuron(const unsigned long N_weights) :
 		m_dOutput(outputMinValue, outputMaxValue), 
 		m_dTemp(outputMinValue, outputMaxValue),
@@ -35,7 +22,8 @@ namespace neural_networks
 		m_dOutput = 0.0; //random_double(0.0, 1.0);
 		m_dTemp = 0.0; //random_double(0.0, 1.0);
 
-		m_dTreshold.m_max = static_cast<double>(N_weights);
+		IRestrictedAccessor<double>::setMax(static_cast<double>(N_weights), m_dTreshold);
+
 		m_dTreshold = random_double(0.0, static_cast<double>(N_weights));
 		m_dSteepness = random_double();
 		m_dSimetricity = random_double(0.0, 1.0);

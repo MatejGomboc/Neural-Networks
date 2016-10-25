@@ -3,14 +3,12 @@
 #include "neuron.h"
 #include <vector>
 #include "restricted.h"
+#include "IRestrictedRange.h"
 
 namespace neural_networks
 {
-	class Output_node
+	class Output_node : private IRestrictedRange<double>
 	{
-	public:
-		static const double weightMinValue;
-		static const double weightMaxValue;
 	public:
 		std::vector<restricted<double>> m_vdWeights;// array of weights (0.0 - 1.0), N_weights = N_neurons
 	public:

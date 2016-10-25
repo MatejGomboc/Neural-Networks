@@ -80,6 +80,8 @@
     <ClInclude Include="main\incl\targetver.h" />
     <ClInclude Include="neural_networks\incl\constants.h" />
     <ClInclude Include="neural_networks\incl\debug.h" />
+    <ClInclude Include="neural_networks\incl\IRestrictedAccessor.h" />
+    <ClInclude Include="neural_networks\incl\IRestrictedRange.h" />
     <ClInclude Include="neural_networks\incl\member.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -98,6 +100,8 @@
     <ClCompile Include="main\src\stdafx.cpp" />
     <ClCompile Include="neural_networks\src\constans.cpp" />
     <ClCompile Include="neural_networks\src\debug.cpp" />
+    <ClCompile Include="neural_networks\src\IRestrictedAccessor.cpp" />
+    <ClCompile Include="neural_networks\src\IRestrictedRange.cpp" />
     <ClCompile Include="neural_networks\src\member.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

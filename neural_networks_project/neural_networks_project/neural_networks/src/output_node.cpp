@@ -1,14 +1,12 @@
 #include "output_node.h"
 #include "neuron.h"
 #include "rand_gen.h"
+#include "constants.h"
 #include <vector>
 
 
 namespace neural_networks
 {
-	const double Output_node::weightMinValue = 0.0;
-	const double Output_node::weightMaxValue = 1.0;
-
 	Output_node::Output_node(const unsigned long N_neurons)
 	{
 		if (N_neurons <= 0) throw "Zero neurons connected to output node.";

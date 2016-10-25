@@ -1,15 +1,11 @@
 #include "network.h"
 #include "neuron.h"
 #include "output_node.h"
+#include "constants.h"
 #include <vector>
 
 namespace neural_networks
 {
-	const double Network::inputMinValue = 0.0;
-	const double Network::inputMaxValue = 1.0;
-	const double Network::outputMinValue = 0.0;
-	const double Network::outputMaxValue = 1.0;
-
 	Network::Network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs)
 	{
 		if (N_inputs <= 0) throw "Invalid number of neural network inputs.";

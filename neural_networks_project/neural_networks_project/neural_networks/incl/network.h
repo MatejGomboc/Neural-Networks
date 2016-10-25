@@ -4,17 +4,13 @@
 #include "output_node.h"
 #include <vector>
 #include "restricted.h"
+#include "IRestrictedRange.h"
 
 
 namespace neural_networks
 {
-	class Network
+	class Network : private IRestrictedRange<double>
 	{
-	public:
-		static const double inputMinValue;
-		static const double inputMaxValue;
-		static const double outputMinValue;
-		static const double outputMaxValue;
 	public:
 		std::vector<restricted<double>> m_dInputs; // array of neural network inputs (0.0 - 1.0)
 		std::vector<restricted<double>> m_dOutputs; // array of neural network outputs (0.0 - 1.0)

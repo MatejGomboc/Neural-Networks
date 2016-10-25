@@ -70,6 +70,18 @@ namespace neural_networks
 	}
 
 	template <typename T>
+	const T& restricted<T>::getMin(void) const
+	{
+		return m_min;
+	}
+
+	template <typename T>
+	const T& restricted<T>::getMax(void) const
+	{
+		return m_max;
+	}
+
+	template <typename T>
 	void restricted<T>::setValue(const T value)
 	{
 		check_bounds(value);
@@ -77,6 +89,19 @@ namespace neural_networks
 		// do the copy
 		m_value = value;
 	}
+
+	template <typename T>
+	void restricted<T>::setMin(const T min)
+	{
+		m_min = min;
+	}
+
+	template <typename T>
+	void restricted<T>::setMax(const T max)
+	{
+		m_max = max;
+	}
+
 
 
 	template class restricted<double>;

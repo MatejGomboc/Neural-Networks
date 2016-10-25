@@ -59,6 +59,12 @@
     <ClInclude Include="neural_networks\incl\restricted.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
+    <ClInclude Include="neural_networks\incl\IRestrictedRange.h">
+      <Filter>neural_networks\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\IRestrictedAccessor.h">
+      <Filter>neural_networks\incl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="neural_networks\src\member.cpp">
@@ -95,6 +101,12 @@
       <Filter>neural_networks\src</Filter>
     </ClCompile>
     <ClCompile Include="neural_networks\src\restricted.cpp">
+      <Filter>neural_networks\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\IRestrictedRange.cpp">
+      <Filter>neural_networks\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\IRestrictedAccessor.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
   </ItemGroup>
