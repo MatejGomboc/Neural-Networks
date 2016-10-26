@@ -21,4 +21,7 @@ namespace neural_networks
 	extern const double inputMaxValue;
 	extern const double outputMinValue;
 	extern const double outputMaxValue;
+
+	extern const double fitnessMinValue;
+	extern const double fitnessMaxValue;
 };

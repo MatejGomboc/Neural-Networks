@@ -4,7 +4,7 @@
 namespace neural_networks
 {
 	template <typename T> 
-	void restricted<T>::check_bounds (const T& value)
+	void restricted<T>::check_bounds(const T& value)
 	{
 		if(value < m_min) throw "Value smaller than lower bound.";
 		if(value > m_max) throw "Value greater than upper bound.";

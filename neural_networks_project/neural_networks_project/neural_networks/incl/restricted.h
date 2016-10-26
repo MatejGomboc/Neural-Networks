@@ -16,7 +16,7 @@ namespace neural_networks
 		T m_value;
 
 	private:
-		void check_bounds (const T& value);
+		void check_bounds(const T& value);
 		void setMin(const T min);
 		void setMax(const T max);
 

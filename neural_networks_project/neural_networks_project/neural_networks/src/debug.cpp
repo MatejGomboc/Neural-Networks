@@ -164,8 +164,15 @@ namespace neural_networks
 			const unsigned long N_neurons = 100;
 			const unsigned long N_outputs = 5;
 
+			Network test_network(N_inputs, N_neurons, N_outputs);
+
+			debug_network(N_inputs, N_neurons, N_outputs, test_network);
+		}
+
+
+		void debug_network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Network& test_network)
+		{
 			static int indx_run = 0;
-			static Network test_network(N_inputs, N_neurons, N_outputs);
 
 			if(test_network.m_dInputs.size() != N_inputs) throw "Invalid number of inputs in network.";
 			if(test_network.m_dOutputs.size() != N_outputs) throw "Invalid number of outputs in network.";
@@ -196,7 +203,27 @@ namespace neural_networks
 			if(indx_run == 1) return;
 			test_network.calculate();
 			indx_run++;
-			debug_network();
+			debug_network(N_inputs, N_neurons, N_outputs, test_network);
+		}
+
+
+		extern void debug_member(void)
+		{
+			const unsigned long N_inputs = 10;
+			const unsigned long N_neurons = 100;
+			const unsigned long N_outputs = 5;
+
+			Member test_member(N_inputs, N_neurons, N_outputs);
+
+			debug_member(N_inputs, N_neurons, N_outputs, test_member);
+		}
+
+
+		extern void debug_member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Member& test_member)
+		{
+			debug_network(N_inputs, N_neurons, N_outputs, test_member.m_brain);
+
+			if((test_member.m_dFitness < 0.0) || (test_member.m_dFitness > 1.0)) throw "Invalid value of member's fitness.";
 		}
 	};
 };

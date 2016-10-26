@@ -2,6 +2,8 @@
 
 #include "neuron.h"
 #include "output_node.h"
+#include "network.h"
+#include "member.h"
 
 #include <string>
 
@@ -15,6 +17,9 @@ namespace neural_networks
 		extern void debug_neuron(void);
 		extern void debug_output_node(const unsigned long N_neurons, const Output_node &test_output_node);
 		extern void debug_output_node(void);
+		extern void debug_network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Network& test_network);
 		extern void debug_network(void);
+		extern void debug_member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Member& test_member);
+		extern void debug_member(void);
 	}
 };

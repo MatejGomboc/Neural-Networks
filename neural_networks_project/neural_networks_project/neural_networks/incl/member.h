@@ -1,21 +1,17 @@
 #pragma once
 
 #include "network.h"
-#include "member.h"
-#include "output_node.h"
-#include "neuron.h"
-#include <vector>
+#include "restricted.h"
 
 
 namespace neural_networks
 {
-	class member
+	class Member
 	{
 	public:
-		double fitness; // fitness value (0.0 - 1.0)
-		network brain; // neural network, "the brain" of population member
+		restricted<double> m_dFitness; // fitness value (0.0 - 1.0)
+		Network m_brain;               // neural network, "the brain" of the population member
 	public:
-		member(std::vector<double>::size_type N_inputs, std::vector<neuron>::size_type N_neurons, std::vector<output_node>::size_type N_outputs);
-		~member(void);
+		Member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs);
 	};
 };

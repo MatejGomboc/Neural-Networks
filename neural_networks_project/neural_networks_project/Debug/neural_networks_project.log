@@ -1,17 +1,18 @@
-﻿Build started 25.10.2016 20:24:33.
+﻿Build started 26.10.2016 19:45:37.
      1>Project "C:\Users\user\Desktop\Neural-Networks\neural_networks_project\neural_networks_project\neural_networks_project.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\neural_networks_project.lastbuildstate".
        InitializeBuildStatus:
          Creating "Debug\neural_networks_project.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main\src\main.cpp main\src\stdafx.cpp neural_networks\src\constans.cpp neural_networks\src\debug.cpp neural_networks\src\IRestrictedAccessor.cpp neural_networks\src\IRestrictedRange.cpp neural_networks\src\network.cpp neural_networks\src\neuron.cpp neural_networks\src\output_node.cpp neural_networks\src\rand_gen.cpp neural_networks\src\restricted.cpp neural_networks\src\util.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main\src\main.cpp main\src\stdafx.cpp neural_networks\src\constans.cpp neural_networks\src\debug.cpp neural_networks\src\IRestrictedAccessor.cpp neural_networks\src\IRestrictedRange.cpp neural_networks\src\member.cpp neural_networks\src\network.cpp neural_networks\src\neuron.cpp neural_networks\src\output_node.cpp neural_networks\src\rand_gen.cpp neural_networks\src\restricted.cpp neural_networks\src\util.cpp
          util.cpp
          restricted.cpp
          rand_gen.cpp
          output_node.cpp
          neuron.cpp
          network.cpp
+         member.cpp
          IRestrictedRange.cpp
          IRestrictedAccessor.cpp
          debug.cpp
@@ -26,6 +27,7 @@
          Debug\debug.obj
          Debug\IRestrictedAccessor.obj
          Debug\IRestrictedRange.obj
+         Debug\member.obj
          Debug\network.obj
          Debug\neuron.obj
          Debug\output_node.obj
@@ -43,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.34
+Time Elapsed 00:00:06.97
