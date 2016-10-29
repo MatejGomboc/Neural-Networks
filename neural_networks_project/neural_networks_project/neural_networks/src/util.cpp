@@ -1,5 +1,6 @@
 #include "util.h"
 #include "constants.h"
+#include <vector>
 
 namespace neural_networks
 {

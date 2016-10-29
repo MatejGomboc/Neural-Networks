@@ -4,10 +4,12 @@
 #include "neuron.h"
 #include "output_node.h"
 #include "network.h"
+#include "population.h"
 
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <set>
 
 namespace neural_networks
 {
@@ -224,6 +226,77 @@ namespace neural_networks
 			debug_network(N_inputs, N_neurons, N_outputs, test_member.m_brain);
 
 			if((test_member.m_dFitness < 0.0) || (test_member.m_dFitness > 1.0)) throw "Invalid value of member's fitness.";
+		}
+
+
+		extern void debug_population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
+			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params, Population& test_population)
+		{
+			if ((test_population.m_mutation_params.m_dProb_mut_neuron_simetricity < 0.0) || 
+				(test_population.m_mutation_params.m_dProb_mut_neuron_simetricity > 1.0) &&
+				(mutation_params.m_dProb_mut_neuron_simetricity != test_population.m_mutation_params.m_dProb_mut_neuron_simetricity))
+				throw "Invalid probability that neuron's activation function's simetricity changes.";
+
+			if ((test_population.m_mutation_params.m_dProb_mut_neuron_steepness < 0.0) || 
+				(test_population.m_mutation_params.m_dProb_mut_neuron_steepness > 1.0) &&
+				(mutation_params.m_dProb_mut_neuron_steepness != test_population.m_mutation_params.m_dProb_mut_neuron_steepness))
+				throw "Invalid probability that neuron's activation function's steepness changes";
+
+			if ((test_population.m_mutation_params.m_dProb_mut_neuron_treshold < 0.0) || 
+				(test_population.m_mutation_params.m_dProb_mut_neuron_treshold > 1.0) &&
+				(mutation_params.m_dProb_mut_neuron_treshold != test_population.m_mutation_params.m_dProb_mut_neuron_treshold))
+				throw "Invalid probability that neuron's activation function's treshold changes";
+
+			if ((test_population.m_mutation_params.m_dProb_mut_neuron_weight < 0.0) || 
+				(test_population.m_mutation_params.m_dProb_mut_neuron_weight > 1.0) &&
+				(mutation_params.m_dProb_mut_neuron_weight != test_population.m_mutation_params.m_dProb_mut_neuron_weight))
+				throw "Invalid probability that one neuron's weight changes";
+
+			if ((test_population.m_mutation_params.m_dProb_mut_output_weight < 0.0) || 
+				(test_population.m_mutation_params.m_dProb_mut_output_weight > 1.0) &&
+				(mutation_params.m_dProb_mut_output_weight != test_population.m_mutation_params.m_dProb_mut_output_weight))
+				throw "Invalid probability that one output node's weight changes";
+
+			if (N_members != test_population.m_members.size()) throw "Invalid number of members in this population.";
+
+			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			{
+				 debug_member(N_memb_input_variables, N_memb_neurons, N_memb_output_variables, test_population.m_members[i]);
+			}
+		}
+
+
+		extern void debug_population(void)
+		{
+			const unsigned long N_members = 7;
+
+			const unsigned long N_memb_input_variables = 5;
+			const unsigned long N_memb_neurons = 10;
+			const unsigned long N_memb_output_variables = 3;
+
+			const Mutation_params mutation_params(random_double(probabilityMinValue, probabilityMaxValue),
+				random_double(probabilityMinValue, probabilityMaxValue),
+				random_double(probabilityMinValue, probabilityMaxValue),
+				random_double(probabilityMinValue, probabilityMaxValue),
+				random_double(probabilityMinValue, probabilityMaxValue));
+
+			Population test_population(N_members, N_memb_input_variables, N_memb_neurons, N_memb_output_variables, mutation_params);
+
+			debug_population(N_members, N_memb_input_variables, N_memb_neurons, N_memb_output_variables, mutation_params, test_population);
+
+			test_population.calculate_outputs();
+
+			debug_population(N_members, N_memb_input_variables, N_memb_neurons, N_memb_output_variables, mutation_params, test_population);
+
+			test_population.mutate();
+
+			debug_population(N_members, N_memb_input_variables, N_memb_neurons, N_memb_output_variables, mutation_params, test_population);
+
+			/*std::set<const unsigned long> dropped_indices;
+			dropped_indices.insert(3);
+			dropped_indices.insert(5);
+
+			std::cout << test_population.roulette_wheel(dropped_indices) << std::endl;*/
 		}
 	};
 };

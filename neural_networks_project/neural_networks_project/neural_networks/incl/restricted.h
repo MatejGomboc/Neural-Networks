@@ -9,10 +9,9 @@ namespace neural_networks
 	template <typename T>
 	class restricted
 	{
-	public:
+	private:
 		T m_min;
 		T m_max;
-	private:
 		T m_value;
 
 	private:

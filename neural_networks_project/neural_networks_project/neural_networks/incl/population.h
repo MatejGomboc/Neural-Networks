@@ -1,50 +1,47 @@
 #pragma once
 
+#include "constants.h"
+#include "restricted.h"
 #include "member.h"
-#include "neuron.h"
-#include "ptr_vector.h"
+#include <vector>
+#include <set>
 
-using namespace stdx;
 
 namespace neural_networks
 {
-	typedef struct
+	struct Mutation_params
 	{
-		// (0.0 - 1.0)
+		Mutation_params(void);
+		Mutation_params(const double prob_mut_neuron_weight, const double prob_mut_output_weight,
+		const double prob_mut_neuron_treshold, const double prob_mut_neuron_steepness, const double prob_mut_neuron_simetricity);
 
-		double mut_probability_neuron_weight; // probability that one neuron's weight changes
-		double mut_probability_output_weight; // probability that one output node's weight changes
+		restricted<double> m_dProb_mut_neuron_weight; // probability that one neuron's weight changes (0.0 - 1.0)
+		restricted<double> m_dProb_mut_output_weight; // probability that one output node's weight changes (0.0 - 1.0)
 
 		/*activation function*/
-		double mut_probability_activ_treshold; // probability that neuron's activation function's treshold changes
-		double mut_probability_activ_steepness; // probability that neuron's activation function's steepness changes
-		double mut_probability_activ_simetricity; // probability that neuron's activation function's simetricity changes
+		restricted<double> m_dProb_mut_neuron_treshold; // probability that neuron's activation function's treshold changes (0.0 - 1.0)
+		restricted<double> m_dProb_mut_neuron_steepness; // probability that neuron's activation function's steepness changes (0.0 - 1.0)
+		restricted<double> m_dProb_mut_neuron_simetricity; // probability that neuron's activation function's simetricity changes (0.0 - 1.0)
 		/*end activation function*/
-	} t_mut_params;
+	};
 
-	class population
+	class Population
 	{
 	public:
-		t_mut_params mutation_params; // mutation parameters
-		pt_vector<member> members;  // array of population members
-		
-		double WorstFitness;
-		double AverageFitness;
-
-		std::vector<member>::size_type indxFittestMember;
-		std::vector<member>::size_type indxWeakestMember;
-
+		Mutation_params m_mutation_params; // mutation parameters
+		std::vector<Member> m_members; // array of population members
 	public:
-		population(std::vector<member>::size_type N_members, std::vector<double>::size_type N_input_variables, std::vector<neuron>::size_type N_neurons, std::vector<double>::size_type N_output_variables, t_mut_params Mutation_params);
-		~population(void);
+		Population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
+			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params);
+		~Population(void);
 		void calculate_outputs(void); // calculate output values of members
 		void mutate(void); // mutate members of population
 		void mate(void); // mate members of population, create new population
-		std::vector<member>::size_type roulette_wheel(void); // roulette wheel selection algorithm
-		std::vector<member>::size_type roulette_wheel(std::vector<member>::size_type dropped_memb_indx); // roulette wheel selection algorithm
-		//std::vector<member>::size_type roulette_wheel(std::vector<std::vector<member>::size_type> dropped_memb_indx); // roulette wheel selection algorithm
-		virtual void CalculateBestWorstAverageIndx(void); // calculate best, worst and average fitnes and indices of fittest and weakest member
 	private:
-		//bool is_in_array(std::vector<member>::size_type indx, std::vector<std::vector<member>::size_type> indx_array); // check if indx is in indx_array
+		// mute one double value if selection process (with given probability) successful
+		void mutate_value(const double probability, const double min, const double max, restricted<double>& value_to_randomize);
+		const unsigned long roulette_wheel(void); // roulette wheel selection algorithm
+		const unsigned long roulette_wheel(const unsigned long dropped_memb_indx); // roulette wheel selection algorithm
+		const unsigned long roulette_wheel(const std::set<const unsigned long>& dropped_memb_indices); // roulette wheel selection algorithm
 	};
 };

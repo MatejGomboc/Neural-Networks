@@ -86,9 +86,7 @@
     <ClInclude Include="neural_networks\incl\network.h" />
     <ClInclude Include="neural_networks\incl\neuron.h" />
     <ClInclude Include="neural_networks\incl\output_node.h" />
-    <ClInclude Include="neural_networks\incl\population.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="neural_networks\incl\population.h" />
     <ClInclude Include="neural_networks\incl\rand_gen.h" />
     <ClInclude Include="neural_networks\incl\restricted.h" />
     <ClInclude Include="neural_networks\incl\util.h" />
@@ -104,9 +102,7 @@
     <ClCompile Include="neural_networks\src\network.cpp" />
     <ClCompile Include="neural_networks\src\neuron.cpp" />
     <ClCompile Include="neural_networks\src\output_node.cpp" />
-    <ClCompile Include="neural_networks\src\population.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="neural_networks\src\population.cpp" />
     <ClCompile Include="neural_networks\src\rand_gen.cpp" />
     <ClCompile Include="neural_networks\src\restricted.cpp" />
     <ClCompile Include="neural_networks\src\util.cpp" />

@@ -4,6 +4,7 @@
 #include "output_node.h"
 #include "network.h"
 #include "member.h"
+#include "population.h"
 
 #include <string>
 
@@ -21,5 +22,7 @@ namespace neural_networks
 		extern void debug_network(void);
 		extern void debug_member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Member& test_member);
 		extern void debug_member(void);
+		extern void debug_population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons, const unsigned long N_memb_output_variables, const Mutation_params& mutation_params, Population& test_population);
+		extern void debug_population(void);
 	}
 };

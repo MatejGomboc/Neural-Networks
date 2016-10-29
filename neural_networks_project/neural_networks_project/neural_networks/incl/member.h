@@ -6,7 +6,7 @@
 
 namespace neural_networks
 {
-	class Member
+	class Member : private IRestrictedRange<double>
 	{
 	public:
 		restricted<double> m_dFitness; // fitness value (0.0 - 1.0)

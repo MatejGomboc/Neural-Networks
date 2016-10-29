@@ -26,4 +26,7 @@ namespace neural_networks
 
 	extern const double fitnessMinValue = 0.0;
 	extern const double fitnessMaxValue = 1.0;
+
+	extern const double probabilityMinValue = 0.0;
+	extern const double probabilityMaxValue = 1.0;
 };
