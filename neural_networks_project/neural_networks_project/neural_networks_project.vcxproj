@@ -39,7 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)\neural_networks\incl;$(ProjectDir)\main\incl;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\neural_networks\incl;$(ProjectDir)\main\incl;$(ProjectDir)\neural_networks\debug\incl;$(ProjectDir)\restricted_range\incl;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -78,34 +78,42 @@
   <ItemGroup>
     <ClInclude Include="main\incl\stdafx.h" />
     <ClInclude Include="main\incl\targetver.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_member.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_network.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_neuron.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_output_node.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_population.h" />
+    <ClInclude Include="neural_networks\debug\incl\debug_rand_gen.h" />
     <ClInclude Include="neural_networks\incl\constants.h" />
-    <ClInclude Include="neural_networks\incl\debug.h" />
-    <ClInclude Include="neural_networks\incl\IRestrictedAccessor.h" />
-    <ClInclude Include="neural_networks\incl\IRestrictedRange.h" />
     <ClInclude Include="neural_networks\incl\member.h" />
     <ClInclude Include="neural_networks\incl\network.h" />
     <ClInclude Include="neural_networks\incl\neuron.h" />
     <ClInclude Include="neural_networks\incl\output_node.h" />
     <ClInclude Include="neural_networks\incl\population.h" />
     <ClInclude Include="neural_networks\incl\rand_gen.h" />
-    <ClInclude Include="neural_networks\incl\restricted.h" />
     <ClInclude Include="neural_networks\incl\util.h" />
+    <ClInclude Include="restricted_range\incl\restricted.h" />
+    <ClInclude Include="restricted_range\incl\srestricted.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\src\main.cpp" />
     <ClCompile Include="main\src\stdafx.cpp" />
-    <ClCompile Include="neural_networks\src\constans.cpp" />
-    <ClCompile Include="neural_networks\src\debug.cpp" />
-    <ClCompile Include="neural_networks\src\IRestrictedAccessor.cpp" />
-    <ClCompile Include="neural_networks\src\IRestrictedRange.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_member.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_network.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_neuron.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_output_node.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_population.cpp" />
+    <ClCompile Include="neural_networks\debug\src\debug_rand_gen.cpp" />
+    <ClCompile Include="neural_networks\src\constants.cpp" />
     <ClCompile Include="neural_networks\src\member.cpp" />
     <ClCompile Include="neural_networks\src\network.cpp" />
     <ClCompile Include="neural_networks\src\neuron.cpp" />
     <ClCompile Include="neural_networks\src\output_node.cpp" />
     <ClCompile Include="neural_networks\src\population.cpp" />
     <ClCompile Include="neural_networks\src\rand_gen.cpp" />
-    <ClCompile Include="neural_networks\src\restricted.cpp" />
     <ClCompile Include="neural_networks\src\util.cpp" />
+    <ClCompile Include="restricted_range\src\restricted.cpp" />
+    <ClCompile Include="restricted_range\src\srestricted.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

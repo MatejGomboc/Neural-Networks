@@ -21,21 +21,27 @@
     <Filter Include="neural_networks\src">
       <UniqueIdentifier>{89481a24-549c-4d1e-b944-8d332141d3dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="restricted_range">
+      <UniqueIdentifier>{f40bf0f3-420f-4359-8ecd-b686f7c5924a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="restricted_range\incl">
+      <UniqueIdentifier>{426aec18-5a1b-4a66-ab59-82f2dce9de47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="restricted_range\src">
+      <UniqueIdentifier>{8af4e5dc-e4b7-4389-b300-c99fc41f2011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="neural_networks\debug">
+      <UniqueIdentifier>{f6652acf-19fa-4adf-929b-7f89809139cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="neural_networks\debug\incl">
+      <UniqueIdentifier>{d3cd4a6f-e803-45e0-a595-f012e89014ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="neural_networks\debug\src">
+      <UniqueIdentifier>{85b13ebc-7581-4260-9ccf-0550957c8d80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="neural_networks\incl\member.h">
-      <Filter>neural_networks\incl</Filter>
-    </ClInclude>
-    <ClInclude Include="neural_networks\incl\network.h">
-      <Filter>neural_networks\incl</Filter>
-    </ClInclude>
     <ClInclude Include="neural_networks\incl\neuron.h">
-      <Filter>neural_networks\incl</Filter>
-    </ClInclude>
-    <ClInclude Include="neural_networks\incl\output_node.h">
-      <Filter>neural_networks\incl</Filter>
-    </ClInclude>
-    <ClInclude Include="neural_networks\incl\population.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
     <ClInclude Include="neural_networks\incl\rand_gen.h">
@@ -53,33 +59,45 @@
     <ClInclude Include="neural_networks\incl\util.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
-    <ClInclude Include="neural_networks\incl\debug.h">
+    <ClInclude Include="restricted_range\incl\restricted.h">
+      <Filter>restricted_range\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="restricted_range\incl\srestricted.h">
+      <Filter>restricted_range\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\debug\incl\debug_neuron.h">
+      <Filter>neural_networks\debug\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\debug\incl\debug_rand_gen.h">
+      <Filter>neural_networks\debug\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\output_node.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
-    <ClInclude Include="neural_networks\incl\restricted.h">
+    <ClInclude Include="neural_networks\debug\incl\debug_output_node.h">
+      <Filter>neural_networks\debug\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\network.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
-    <ClInclude Include="neural_networks\incl\IRestrictedRange.h">
+    <ClInclude Include="neural_networks\debug\incl\debug_network.h">
+      <Filter>neural_networks\debug\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\member.h">
       <Filter>neural_networks\incl</Filter>
     </ClInclude>
-    <ClInclude Include="neural_networks\incl\IRestrictedAccessor.h">
+    <ClInclude Include="neural_networks\incl\population.h">
       <Filter>neural_networks\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\debug\incl\debug_member.h">
+      <Filter>neural_networks\debug\incl</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\debug\incl\debug_population.h">
+      <Filter>neural_networks\debug\incl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="neural_networks\src\member.cpp">
-      <Filter>neural_networks\src</Filter>
-    </ClCompile>
-    <ClCompile Include="neural_networks\src\network.cpp">
-      <Filter>neural_networks\src</Filter>
-    </ClCompile>
     <ClCompile Include="neural_networks\src\neuron.cpp">
-      <Filter>neural_networks\src</Filter>
-    </ClCompile>
-    <ClCompile Include="neural_networks\src\output_node.cpp">
-      <Filter>neural_networks\src</Filter>
-    </ClCompile>
-    <ClCompile Include="neural_networks\src\population.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
     <ClCompile Include="neural_networks\src\rand_gen.cpp">
@@ -91,23 +109,47 @@
     <ClCompile Include="main\src\stdafx.cpp">
       <Filter>main\src</Filter>
     </ClCompile>
-    <ClCompile Include="neural_networks\src\constans.cpp">
-      <Filter>neural_networks\src</Filter>
-    </ClCompile>
     <ClCompile Include="neural_networks\src\util.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
-    <ClCompile Include="neural_networks\src\debug.cpp">
+    <ClCompile Include="restricted_range\src\restricted.cpp">
+      <Filter>restricted_range\src</Filter>
+    </ClCompile>
+    <ClCompile Include="restricted_range\src\srestricted.cpp">
+      <Filter>restricted_range\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\constants.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
-    <ClCompile Include="neural_networks\src\restricted.cpp">
+    <ClCompile Include="neural_networks\debug\src\debug_neuron.cpp">
+      <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\debug\src\debug_rand_gen.cpp">
+      <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\output_node.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
-    <ClCompile Include="neural_networks\src\IRestrictedRange.cpp">
+    <ClCompile Include="neural_networks\debug\src\debug_output_node.cpp">
+      <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\network.cpp">
       <Filter>neural_networks\src</Filter>
     </ClCompile>
-    <ClCompile Include="neural_networks\src\IRestrictedAccessor.cpp">
+    <ClCompile Include="neural_networks\debug\src\debug_network.cpp">
+      <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\member.cpp">
       <Filter>neural_networks\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\population.cpp">
+      <Filter>neural_networks\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\debug\src\debug_member.cpp">
+      <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\debug\src\debug_population.cpp">
+      <Filter>neural_networks\debug\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,55 +1,33 @@
 #include "population.h"
 #include "member.h"
 #include "rand_gen.h"
+#include "restricted.h"
+#include "srestricted.h"
 #include <vector>
 #include <set>
 
 
 namespace neural_networks
 {
-	Mutation_params::Mutation_params(void) :
-		m_dProb_mut_neuron_weight(probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_output_weight(probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_treshold(probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_steepness(probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_simetricity(probabilityMinValue, probabilityMaxValue)
-	{
-	}
-
-
 	Mutation_params::Mutation_params(const double prob_mut_neuron_weight, const double prob_mut_output_weight,
-		const double prob_mut_neuron_treshold, double prob_mut_neuron_steepness, double prob_mut_neuron_simetricity) :
-		m_dProb_mut_neuron_weight(prob_mut_neuron_weight, probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_output_weight(prob_mut_output_weight, probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_treshold(prob_mut_neuron_treshold, probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_steepness(prob_mut_neuron_steepness, probabilityMinValue, probabilityMaxValue),
-		m_dProb_mut_neuron_simetricity(prob_mut_neuron_simetricity, probabilityMinValue, probabilityMaxValue)
+		const double prob_mut_neuron_treshold, double prob_mut_neuron_steepness,
+		double prob_mut_neuron_simetricity) :
+		m_dProb_mut_neuron_weight(prob_mut_neuron_weight),
+		m_dProb_mut_output_weight(prob_mut_output_weight),
+		m_dProb_mut_neuron_treshold(prob_mut_neuron_treshold),
+		m_dProb_mut_neuron_steepness(prob_mut_neuron_steepness),
+		m_dProb_mut_neuron_simetricity(prob_mut_neuron_simetricity)
 	{
 	}
 
 
 	Population::Population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
-			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params)
+			const unsigned long N_memb_output_variables, const Mutation_params mutation_params)
 	{
 		if (N_members <= 0) throw "No members in this population.";
 		if (N_memb_input_variables <= 0) throw "No member's input variables.";
 		if (N_memb_neurons <= 0) throw "Zero member's neurons.";
 		if (N_memb_output_variables <= 0) throw "No member's output variables.";
-
-		if ((mutation_params.m_dProb_mut_neuron_simetricity < 0.0) || (mutation_params.m_dProb_mut_neuron_simetricity > 1.0))
-			throw "Invalid probability that neuron's activation function's simetricity changes.";
-
-		if ((mutation_params.m_dProb_mut_neuron_steepness < 0.0) || (mutation_params.m_dProb_mut_neuron_steepness > 1.0))
-			throw "Invalid probability that neuron's activation function's steepness changes";
-
-		if ((mutation_params.m_dProb_mut_neuron_treshold < 0.0) || (mutation_params.m_dProb_mut_neuron_treshold > 1.0))
-			throw "Invalid probability that neuron's activation function's treshold changes";
-
-		if ((mutation_params.m_dProb_mut_neuron_weight < 0.0) || (mutation_params.m_dProb_mut_neuron_weight > 1.0))
-			throw "Invalid probability that one neuron's weight changes";
-
-		if ((mutation_params.m_dProb_mut_output_weight < 0.0) || (mutation_params.m_dProb_mut_output_weight > 1.0))
-			throw "Invalid probability that one output node's weight changes";
 
 		m_members.reserve(N_members);
 
@@ -77,11 +55,27 @@ namespace neural_networks
 	}
 
 
-	void Population::mutate_value(const double probability, const double min, const double max, restricted<double>& value_to_randomize)
+	void Population::mutate_value(const double probability, restricted_range::restricted<double>& value_to_randomize)
 	{
 		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
 		{
-			value_to_randomize = random_double(min, max); // if successfull, generate new value
+			value_to_randomize = random_double(value_to_randomize.getMin(), value_to_randomize.getMax()); // if successfull, generate new value
+		}
+	}
+
+	void Population::mutate_value(const double probability, restricted_range::srestricted<double, 0, 1>& value_to_randomize)
+	{
+		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
+		{
+			value_to_randomize = random_double(value_to_randomize.getMin(), value_to_randomize.getMax()); // if successfull, generate new value
+		}
+	}
+
+	void Population::mutate_value(const double probability, restricted_range::srestricted<double, -1000, 1000>& value_to_randomize)
+	{
+		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
+		{
+			value_to_randomize = random_double(value_to_randomize.getMin(), value_to_randomize.getMax()); // if successfull, generate new value
 		}
 	}
 
@@ -94,8 +88,7 @@ namespace neural_networks
 			{
 				for(unsigned long j = 0; j < m_members[k].m_brain.m_output_nodes[i].m_vdWeights.size(); j++) // for each weight
 				{
-					mutate_value(m_mutation_params.m_dProb_mut_output_weight, weightMinValue, weightMaxValue,
-						m_members[k].m_brain.m_output_nodes[i].m_vdWeights[j]);
+					mutate_value(m_mutation_params.m_dProb_mut_output_weight, m_members[k].m_brain.m_output_nodes[i].m_vdWeights[j]);
 				}
 			}
 
@@ -103,69 +96,68 @@ namespace neural_networks
 			{
 				for(unsigned long j = 0; j < m_members[k].m_brain.m_neurons[i].m_vdWeights.size(); j++) // for each weight
 				{
-					mutate_value(m_mutation_params.m_dProb_mut_neuron_weight, weightMinValue, weightMaxValue,
-						m_members[k].m_brain.m_neurons[i].m_vdWeights[j]);
+					mutate_value(m_mutation_params.m_dProb_mut_neuron_weight, m_members[k].m_brain.m_neurons[i].m_vdWeights[j]);
 				}
 
-				mutate_value(m_mutation_params.m_dProb_mut_neuron_simetricity, simetricityMinValue, simetricityMaxValue,
-					m_members[k].m_brain.m_neurons[i].m_dSimetricity);
+				mutate_value(m_mutation_params.m_dProb_mut_neuron_simetricity, m_members[k].m_brain.m_neurons[i].m_dSimetricity);
 
-				mutate_value(m_mutation_params.m_dProb_mut_neuron_steepness, steepnessMinValue, steepnessMaxValue,
-					m_members[k].m_brain.m_neurons[i].m_dSteepness);
+				mutate_value(m_mutation_params.m_dProb_mut_neuron_steepness, m_members[k].m_brain.m_neurons[i].m_dSteepness);
 
-				mutate_value(m_mutation_params.m_dProb_mut_neuron_treshold, tresholdMinValue,
-					m_members[k].m_brain.m_neurons[i].m_dTreshold.getMax(),
-					m_members[k].m_brain.m_neurons[i].m_dTreshold);
+				mutate_value(m_mutation_params.m_dProb_mut_neuron_treshold, m_members[k].m_brain.m_neurons[i].m_dTreshold);
 			}
 		}
 	}
 
 
-	//void neural_networks::population::mate(void)
-	//{
-	//	std::vector<member>::size_type i_ma = 0;
-	//	std::vector<member>::size_type i_mb = 0;
+	void Population::mate(void)
+	{
+		unsigned long i_ma = 0;
+		unsigned long i_mb = 0;
 
-	//	double mating_weight_a = 0.0;
-	//	double mating_weight_b = 0.0;
+		double mating_weight_a = 0.0;
+		double mating_weight_b = 0.0;
 
-	//	std::vector<member> new_members;
-	//	new_members.reserve(members.size());
+		Member temp_member(m_members[0].m_brain.m_dInputs.size(), m_members[0].m_brain.m_neurons.size(), m_members[0].m_brain.m_dOutputs.size());
 
-	//	for(std::vector<member>::size_type i_mn = 0; i_mn != new_members.size(); i_mn++)
-	//	{
-	//		i_ma = roulette_wheel();
-	//		i_mb = roulette_wheel(i_ma);
+		std::vector<Member> new_members;
+		new_members.reserve(m_members.size());
 
-	//		mating_weight_a = (members[i_ma].fitness == members[i_mb].fitness == 0.0) ? 1 : (members[i_ma].fitness / (members[i_ma].fitness + members[i_mb].fitness));
-	//		mating_weight_b = (members[i_ma].fitness == members[i_mb].fitness == 0.0) ? 1 : (members[i_mb].fitness / (members[i_ma].fitness + members[i_mb].fitness));
+		for(unsigned long i_mn = 0; i_mn < m_members.size(); i_mn++) // for each population member
+		{
+			i_ma = roulette_wheel();
+			i_mb = roulette_wheel(i_ma);
 
-	//		for(std::vector<output_node>::size_type i = 0; i != members[i_ma].brain.output_nodes.size(); i++) // for each output node
-	//		{
-	//			for(std::vector<double>::size_type j = 0; j != members[i_ma].brain.output_nodes[i].weights.size(); j++) // for each weight
-	//			{
-	//				new_members[i_mn].brain.output_nodes[i].weights[j] = mating_weight_a * (members[i_ma].brain.output_nodes[i].weights[j]) + mating_weight_b * (members[i_mb].brain.output_nodes[i].weights[j]);
-	//			}
-	//		}
+			mating_weight_a = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 1 : (m_members[i_ma].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
+			mating_weight_b = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 1 : (m_members[i_mb].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
 
-	//		for(std::vector<neuron>::size_type i = 0; i != members[i_ma].brain.neurons.size(); i++) // for each neuron
-	//		{
-	//			for(std::vector<double>::size_type j = 0; j != members[i_ma].brain.neurons[i].weights.size(); j++) // for each weight
-	//			{
-	//				new_members[i_mn].brain.neurons[i].weights[j] = mating_weight_a * members[i_ma].brain.neurons[i].weights[j] + mating_weight_b * members[i_mb].brain.neurons[i].weights[j];
-	//			}
+			for(unsigned long i = 0; i < m_members[i_ma].m_brain.m_output_nodes.size(); i++) // for each output node
+			{
+				for(unsigned long j = 0; j < m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights.size(); j++) // for each weight
+				{
+					temp_member.m_brain.m_output_nodes[i].m_vdWeights[j] = mating_weight_a * (m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights[j]) + mating_weight_b * (m_members[i_mb].m_brain.m_output_nodes[i].m_vdWeights[j]);
+				}
+			}
 
-	//			new_members[i_mn].brain.neurons[i].simetricity = mating_weight_a * members[i_ma].brain.neurons[i].simetricity + mating_weight_b * members[i_mb].brain.neurons[i].simetricity;
+			for(unsigned long i = 0; i < m_members[i_ma].m_brain.m_neurons.size(); i++) // for each neuron
+			{
+				for(unsigned long j = 0; j < m_members[i_ma].m_brain.m_neurons[i].m_vdWeights.size(); j++) // for each weight
+				{
+					temp_member.m_brain.m_neurons[i].m_vdWeights[j] = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_vdWeights[j] + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_vdWeights[j];
+				}
 
-	//			new_members[i_mn].brain.neurons[i].steepness = mating_weight_a * members[i_ma].brain.neurons[i].steepness + mating_weight_b * members[i_mb].brain.neurons[i].steepness;
+				temp_member.m_brain.m_neurons[i].m_dSimetricity = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSimetricity + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSimetricity;
 
-	//			new_members[i_mn].brain.neurons[i].treshold = mating_weight_a * members[i_ma].brain.neurons[i].treshold + mating_weight_b * members[i_mb].brain.neurons[i].treshold;
+				temp_member.m_brain.m_neurons[i].m_dSteepness = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSteepness + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSteepness;
 
-	//		}
-	//	}
+				temp_member.m_brain.m_neurons[i].m_dTreshold = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dTreshold + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dTreshold;
 
-	//	members.swap(new_members);
-	//}
+			}
+
+			new_members.push_back(temp_member);
+		}
+
+		m_members.swap(new_members);
+	}
 
 
 	const unsigned long Population::roulette_wheel(void) // perform roulette wheel selection of population member

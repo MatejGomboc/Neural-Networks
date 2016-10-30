@@ -2,6 +2,7 @@
 #include "neuron.h"
 #include "output_node.h"
 #include "constants.h"
+#include "srestricted.h"
 #include <vector>
 
 namespace neural_networks
@@ -15,13 +16,13 @@ namespace neural_networks
 		m_dInputs.reserve(N_inputs);
 		for(unsigned long i = 0; i < N_inputs; i++)
 		{
-			m_dInputs.push_back(restricted<double>(0.0, inputMinValue, inputMaxValue));
+			m_dInputs.push_back(restricted_range::srestricted<double, 0, 1>(0.0));
 		}
 
 		m_dOutputs.reserve(N_outputs);
 		for(unsigned long i = 0; i < N_outputs; i++)
 		{
-			m_dOutputs.push_back(restricted<double>(0.0, outputMinValue, outputMaxValue));
+			m_dOutputs.push_back(restricted_range::srestricted<double, 0, 1>(0.0));
 		}
 
 		m_neurons.reserve(N_neurons);

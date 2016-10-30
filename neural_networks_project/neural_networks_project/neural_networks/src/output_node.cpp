@@ -2,6 +2,7 @@
 #include "neuron.h"
 #include "rand_gen.h"
 #include "constants.h"
+#include "srestricted.h"
 #include <vector>
 
 
@@ -15,7 +16,7 @@ namespace neural_networks
 
 		for (unsigned long i = 0; i != N_neurons; i++)
 		{
-			m_vdWeights.push_back(restricted<double>(random_double(0.0, 1.0), weightMinValue, weightMaxValue));
+			m_vdWeights.push_back(restricted_range::srestricted<double, 0 ,1>(random_double(0.0, 1.0)));
 		}
 	}
 
