@@ -127,8 +127,8 @@ namespace neural_networks
 			i_ma = roulette_wheel();
 			i_mb = roulette_wheel(i_ma);
 
-			mating_weight_a = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 1 : (m_members[i_ma].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
-			mating_weight_b = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 1 : (m_members[i_mb].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
+			mating_weight_a = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 0.5 : (m_members[i_ma].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
+			mating_weight_b = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 0.5 : (m_members[i_mb].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
 
 			for(unsigned long i = 0; i < m_members[i_ma].m_brain.m_output_nodes.size(); i++) // for each output node
 			{

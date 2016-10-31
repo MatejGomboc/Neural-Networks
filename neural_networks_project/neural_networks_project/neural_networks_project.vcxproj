@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="main\incl\simulation.h" />
     <ClInclude Include="main\incl\stdafx.h" />
     <ClInclude Include="main\incl\targetver.h" />
     <ClInclude Include="neural_networks\debug\incl\debug_member.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\src\main.cpp" />
+    <ClCompile Include="main\src\simulation.cpp" />
     <ClCompile Include="main\src\stdafx.cpp" />
     <ClCompile Include="neural_networks\debug\src\debug_member.cpp" />
     <ClCompile Include="neural_networks\debug\src\debug_network.cpp" />

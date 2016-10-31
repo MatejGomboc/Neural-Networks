@@ -1,14 +1,11 @@
 #include "stdafx.h"
 #include <iostream>
-
-#include "debug_population.h"
+#include "simulation.h"
 
 using namespace std;
-using namespace neural_networks;
 
 int main(int argc, char* argv[])
 {
-	debug::debug_population();
-
+	test_genetic_algorythm();
 	return 0;
 }

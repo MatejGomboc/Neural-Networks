@@ -95,6 +95,9 @@
     <ClInclude Include="neural_networks\debug\incl\debug_population.h">
       <Filter>neural_networks\debug\incl</Filter>
     </ClInclude>
+    <ClInclude Include="main\incl\simulation.h">
+      <Filter>main\incl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="neural_networks\src\neuron.cpp">
@@ -150,6 +153,9 @@
     </ClCompile>
     <ClCompile Include="neural_networks\debug\src\debug_population.cpp">
       <Filter>neural_networks\debug\src</Filter>
+    </ClCompile>
+    <ClCompile Include="main\src\simulation.cpp">
+      <Filter>main\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
