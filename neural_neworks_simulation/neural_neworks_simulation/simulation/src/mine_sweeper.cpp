@@ -1,19 +1,28 @@
 #include "mine_sweeper.h"
+#include <vector>
+#include <cmath>
+
+#include "utils.h"
+#include "matrix2d.h"
+#include "vector2d.h"
+#include "ini_params.h"
+
+using namespace linear_algebra;
 
 
 //-----------------------------------constructor-------------------------
 //-----------------------------------------------------------------------
 Mine_sweeper::Mine_sweeper() :
-	Member(2,2,2),
 	m_vPosition(Vector2D(0.0, 0.0)),
 	m_dRotation(0.0),
 	m_dSpeed(0.0),
-	m_dScore(0.0)
+	m_dScore(0.0),
+	m_ulClosestMine(0)
 {
 }
 
 
-//-------------------------------------------Reset()--------------------
+//-------------------------------------------reset()--------------------
 //
 //	Resets the sweeper's position, core and rotation.
 //
@@ -34,20 +43,20 @@ void Mine_sweeper::reset()
 }
 
 
-//---------------------WorldTransform--------------------------------
+//---------------------worldTransform--------------------------------
 //
 //	Sets up a transformation matrix for the sweeper's position vector,
 //  according to its current scale, rotation and position, and transforms
 //  it.
 //
 //-------------------------------------------------------------------
-void Mine_sweeper::worldTransform(void)
+void Mine_sweeper::worldTransform(const double sweeper_scale)
 {
 	//create the world transformation matrix
 	Matrix2D matrix = Matrix2D::identity();
 
 	//scale
-	matrix = Matrix2D::multiply(matrix, Matrix2D::scale(1.0, 1.0)); //TODO!!
+	matrix = Matrix2D::multiply(matrix, Matrix2D::scale(sweeper_scale, sweeper_scale));
 
 	//rotate
 	matrix = Matrix2D::multiply(matrix, Matrix2D::rotate(m_dRotation));
@@ -60,7 +69,7 @@ void Mine_sweeper::worldTransform(void)
 }
 
 
-//-------------------------------Update()--------------------------------
+//-------------------------------update()--------------------------------
 //
 //	First we take sensor readings and feed these into the sweepers brain.
 //
@@ -77,104 +86,72 @@ void Mine_sweeper::worldTransform(void)
 void Mine_sweeper::update(const std::vector<Vector2D>& mines)
 {
 	//get vector to closest mine
-	Vector2D vClosestMine = GetClosestMine(mines);
+	Vector2D vClosestMine = getClosestMine(mines);
 
 	//normalise it
 	vClosestMine.normalize();
 
-	//add in vector to closest mine
-	inputs.push_back(vClosestMine.x);
-	inputs.push_back(vClosestMine.y);
+	////add in vector to closest mine
 
-	//add in sweepers look at vector
-	inputs.push_back(m_vLookAt.x);
-	inputs.push_back(m_vLookAt.y);
-
+	////add in sweepers look at vector
 
 	//update the brain and get feedback
-	vector<double> output = m_ItsBrain.Update(inputs);
-
-	//make sure there were no errors in calculating the 
-	//output
-	if (output.size() < CParams::iNumOutputs) 
-	{
-		return false;
-	}
 
 	//assign the outputs to the sweepers left & right tracks
-	m_lTrack = output[0];
-	m_rTrack = output[1];
 
 	//calculate steering forces
-	double RotForce = m_lTrack - m_rTrack;
 
 	//clamp rotation
-	Clamp(RotForce, -CParams::dMaxTurnRate, CParams::dMaxTurnRate);
-
-	m_dRotation += RotForce;
-
-	m_dSpeed = (m_lTrack + m_rTrack);	
 
 	//update Look At 
-	m_vLookAt.x = -sin(m_dRotation);
-	m_vLookAt.y = cos(m_dRotation);
 
 	//update position
-	m_vPosition += (m_vLookAt * m_dSpeed);
 
 	//wrap around window limits
-	if (m_vPosition.x > CParams::WindowWidth) m_vPosition.x = 0;
-	if (m_vPosition.x < 0) m_vPosition.x = CParams::WindowWidth;
-	if (m_vPosition.y > CParams::WindowHeight) m_vPosition.y = 0;
-	if (m_vPosition.y < 0) m_vPosition.y = CParams::WindowHeight;
-
-	return true;
 }
 
 
-//----------------------GetClosestObject()---------------------------------
+//----------------------getClosestMine()---------------------------------
 //
 //	returns the vector from the sweeper to the closest mine
 //
 //-----------------------------------------------------------------------
-SVector2D CMinesweeper::GetClosestMine(vector<SVector2D> &mines)
+Vector2D Mine_sweeper::getClosestMine(const std::vector<Vector2D>& mines)
 {
-	double			closest_so_far = 99999;
-
-	SVector2D		vClosestObject(0, 0);
+	double closest_so_far;
+	Vector2D vClosestObject(0.0, 0.0);
+	double len_to_object;
 
 	//cycle through mines to find closest
-	for (int i=0; i<mines.size(); i++)
+	for (unsigned long i = 0; i < mines.size(); i++)
 	{
-		double len_to_object = Vec2DLength(mines[i] - m_vPosition);
+		len_to_object = (mines[i] - m_vPosition).length();
 
-		if (len_to_object < closest_so_far)
+		if ((len_to_object < closest_so_far) || (i == 0))
 		{
 			closest_so_far	= len_to_object;
 
 			vClosestObject	= m_vPosition - mines[i];
 
-			m_iClosestMine = i;
+			m_ulClosestMine = i;
 		}
 	}
 
 	return vClosestObject;
 }
-//----------------------------- CheckForMine -----------------------------
+
+
+//-----------------------------checkCollision----------------------------
 //
 //  this function checks for collision with its closest mine (calculated
 //  earlier and stored in m_iClosestMine)
 //-----------------------------------------------------------------------
-int CMinesweeper::CheckForMine(vector<SVector2D> &mines, double size)
+bool Mine_sweeper::checkCollision(const std::vector<Vector2D> &mines, const double mine_size)
 {
-	SVector2D DistToObject = m_vPosition - mines[m_iClosestMine];
+	Vector2D distToObject = m_vPosition - mines[m_ulClosestMine];
 
-	if (Vec2DLength(DistToObject) < (size + 5))
-	{
-		return m_iClosestMine;
-	}
-
-	return -1;
+	if (distToObject.length() < mine_size) return true;
+	else return false;
 }
 
 

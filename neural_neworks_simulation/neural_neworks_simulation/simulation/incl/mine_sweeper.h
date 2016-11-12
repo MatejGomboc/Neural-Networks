@@ -1,16 +1,11 @@
 #pragma once
 
 #include <vector>
-#include <cmath>
-
-#include "utils.h"
 #include "matrix2d.h"
 #include "vector2d.h"
-#include "ini_params.h"
-#include "member.h"
 
 
-class Mine_sweeper : public neural_networks::Member
+class Mine_sweeper //: public neural_networks::Member
 {
 private:
 	//it's position in the world
@@ -24,6 +19,8 @@ private:
 	//the sweeper's score 
 	double m_dScore;
 
+	unsigned long m_ulClosestMine;
+
 public:
 	Mine_sweeper();
 
@@ -33,22 +30,11 @@ public:
 	void update(const std::vector<Vector2D>& mines);
 
 	//used to transform the sweepers vertices prior to rendering
-	void worldTransform(void);
+	void worldTransform(const double sweeper_scale);
 
 	//returns a vector to the closest mine
-	SVector2D	GetClosestMine(vector<SVector2D> &objects);
+	Vector2D getClosestMine(const std::vector<Vector2D>& mines);
 
 	//checks to see if the minesweeper has 'collected' a mine
-	int       CheckForMine(vector<SVector2D> &mines, double size);
-
-	//-------------------accessor functions
-	SVector2D	Position()const{return m_vPosition;}
-
-	void			IncrementFitness(){++m_dFitness;}
-
-	double		Fitness()const{return m_dFitness;}
-
-	void      PutWeights(vector<double> &w){m_ItsBrain.PutWeights(w);}
-
-	int       GetNumberOfWeights()const{return m_ItsBrain.GetNumberOfWeights();}
+	bool checkCollision(const std::vector<Vector2D>& mines, const double mine_size);
 };

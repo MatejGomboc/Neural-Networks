@@ -16,12 +16,7 @@ namespace linear_algebra
 
 		Matrix2D(const double _11 = 0.0, const double _12 = 0.0, const double _13 = 0.0,
 			const double _21 = 0.0, const double _22 = 0.0, const double _23 = 0.0,
-			const double _31 = 0.0, const double _32 = 0.0, const double _33 = 0.0) :
-		m_d11(_11), m_d12(_12), m_d13(_13),
-			m_d21(_21), m_d22(_22), m_d23(_23),
-			m_d31(_31), m_d32(_32), m_d33(_33)
-		{
-		}
+			const double _31 = 0.0, const double _32 = 0.0, const double _33 = 0.0);
 
 		//multiplies matrixL with matrixR
 		static Matrix2D multiply(const Matrix2D& matrixL, const Matrix2D& matrixR);
