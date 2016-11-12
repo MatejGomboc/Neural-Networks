@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\main">
+      <UniqueIdentifier>{d02a1cb9-b9ed-4621-8c53-4dd2a9567f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\simulation">
+      <UniqueIdentifier>{f36bc985-9907-49fd-bc9c-b85dacb5bc7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\simulation">
+      <UniqueIdentifier>{be3221d8-1ed9-4611-ab46-46fedf4739e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main">
+      <UniqueIdentifier>{d2531eda-3cb3-4f51-b64f-addcfac13ff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\linear_algebra">
+      <UniqueIdentifier>{13d64f06-a44c-40e5-b7c8-77fe69f76680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\linear_algebra">
+      <UniqueIdentifier>{01671a33-ab22-489a-99c6-7f59c7007043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\neural_networks">
+      <UniqueIdentifier>{fbf6dac2-8823-4bd5-811c-32565114ea86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\neural_networks">
+      <UniqueIdentifier>{3caa367d-c079-475c-8427-8b43300cff5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\restricted_range">
+      <UniqueIdentifier>{b02dad11-78aa-4cd3-91e6-5e7c4b92530c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\restricted_range">
+      <UniqueIdentifier>{996b30e5-6542-41f6-adf2-282c5cd21543}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="params.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="neural_neworks_simulation.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="neural_neworks_simulation.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main\incl\resource.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\incl\targetver.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\incl\utils.h">
+      <Filter>Header Files\main</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\ini_params.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\timer.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="linear_algebra\incl\vector2d.h">
+      <Filter>Header Files\linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="linear_algebra\incl\matrix2d.h">
+      <Filter>Header Files\linear_algebra</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\CController.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\mine_sweeper.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\constants.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\member.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\network.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\neural_network_exception.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\neuron.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\output_node.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\population.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\rand_gen.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="neural_networks\incl\util.h">
+      <Filter>Header Files\neural_networks</Filter>
+    </ClInclude>
+    <ClInclude Include="restricted_range\incl\restricted.h">
+      <Filter>Header Files\restricted_range</Filter>
+    </ClInclude>
+    <ClInclude Include="restricted_range\incl\restricted_range_exception.h">
+      <Filter>Header Files\restricted_range</Filter>
+    </ClInclude>
+    <ClInclude Include="restricted_range\incl\srestricted.h">
+      <Filter>Header Files\restricted_range</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\src\main.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\src\utils.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\ini_params.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\timer.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="linear_algebra\src\vector2d.cpp">
+      <Filter>Source Files\linear_algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="linear_algebra\src\matrix2d.cpp">
+      <Filter>Source Files\linear_algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\CController.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\mine_sweeper.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\constants.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\member.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\network.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\neural_network_exception.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\neuron.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\output_node.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\population.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\rand_gen.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="neural_networks\src\util.cpp">
+      <Filter>Source Files\neural_networks</Filter>
+    </ClCompile>
+    <ClCompile Include="restricted_range\src\restricted.cpp">
+      <Filter>Source Files\restricted_range</Filter>
+    </ClCompile>
+    <ClCompile Include="restricted_range\src\restricted_range_exception.cpp">
+      <Filter>Source Files\restricted_range</Filter>
+    </ClCompile>
+    <ClCompile Include="restricted_range\src\srestricted.cpp">
+      <Filter>Source Files\restricted_range</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

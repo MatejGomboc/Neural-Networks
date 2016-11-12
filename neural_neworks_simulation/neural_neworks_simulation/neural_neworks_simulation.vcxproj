@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{25060948-03A7-4FAC-AA85-C3217C44C1E0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>neural_neworks_simulation</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <EmbedManifest>false</EmbedManifest>
+    <IncludePath>$(ProjectDir)\neural_networks\incl;$(ProjectDir)\simulation\incl;$(ProjectDir)\main\incl;$(ProjectDir)\restricted_range\incl;$(ProjectDir)\linear_algebra\incl;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="neural_neworks_simulation.ico" />
+    <None Include="params.ini" />
+    <None Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="neural_neworks_simulation.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="linear_algebra\incl\matrix2d.h" />
+    <ClInclude Include="linear_algebra\incl\vector2d.h" />
+    <ClInclude Include="main\incl\resource.h" />
+    <ClInclude Include="main\incl\targetver.h" />
+    <ClInclude Include="main\incl\utils.h" />
+    <ClInclude Include="neural_networks\incl\constants.h" />
+    <ClInclude Include="neural_networks\incl\member.h" />
+    <ClInclude Include="neural_networks\incl\network.h" />
+    <ClInclude Include="neural_networks\incl\neural_network_exception.h" />
+    <ClInclude Include="neural_networks\incl\neuron.h" />
+    <ClInclude Include="neural_networks\incl\output_node.h" />
+    <ClInclude Include="neural_networks\incl\population.h" />
+    <ClInclude Include="neural_networks\incl\rand_gen.h" />
+    <ClInclude Include="neural_networks\incl\util.h" />
+    <ClInclude Include="restricted_range\incl\restricted.h" />
+    <ClInclude Include="restricted_range\incl\restricted_range_exception.h" />
+    <ClInclude Include="restricted_range\incl\srestricted.h" />
+    <ClInclude Include="simulation\incl\CController.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\mine_sweeper.h" />
+    <ClInclude Include="simulation\incl\ini_params.h" />
+    <ClInclude Include="simulation\incl\timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="linear_algebra\src\matrix2d.cpp" />
+    <ClCompile Include="linear_algebra\src\vector2d.cpp" />
+    <ClCompile Include="main\src\main.cpp" />
+    <ClCompile Include="main\src\utils.cpp" />
+    <ClCompile Include="neural_networks\src\constants.cpp" />
+    <ClCompile Include="neural_networks\src\member.cpp" />
+    <ClCompile Include="neural_networks\src\network.cpp" />
+    <ClCompile Include="neural_networks\src\neural_network_exception.cpp" />
+    <ClCompile Include="neural_networks\src\neuron.cpp" />
+    <ClCompile Include="neural_networks\src\output_node.cpp" />
+    <ClCompile Include="neural_networks\src\population.cpp" />
+    <ClCompile Include="neural_networks\src\rand_gen.cpp" />
+    <ClCompile Include="neural_networks\src\util.cpp" />
+    <ClCompile Include="restricted_range\src\restricted.cpp" />
+    <ClCompile Include="restricted_range\src\restricted_range_exception.cpp" />
+    <ClCompile Include="restricted_range\src\srestricted.cpp" />
+    <ClCompile Include="simulation\src\CController.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="simulation\src\mine_sweeper.cpp" />
+    <ClCompile Include="simulation\src\ini_params.cpp" />
+    <ClCompile Include="simulation\src\timer.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

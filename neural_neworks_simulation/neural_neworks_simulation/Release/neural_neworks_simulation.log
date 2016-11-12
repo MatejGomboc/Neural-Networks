@@ -1,0 +1,62 @@
+﻿Build started 12.11.2016 18:27:47.
+     1>Project "C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\neural_neworks_simulation.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\neural_neworks_simulation.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Release\neural_neworks_simulation.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Program Files\Visual Leak Detector\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt linear_algebra\src\matrix2d.cpp linear_algebra\src\vector2d.cpp main\src\main.cpp main\src\utils.cpp neural_networks\src\constants.cpp neural_networks\src\member.cpp neural_networks\src\network.cpp neural_networks\src\neural_network_exception.cpp neural_networks\src\neuron.cpp neural_networks\src\output_node.cpp neural_networks\src\population.cpp neural_networks\src\rand_gen.cpp neural_networks\src\util.cpp restricted_range\src\restricted.cpp restricted_range\src\restricted_range_exception.cpp restricted_range\src\srestricted.cpp simulation\src\mine_sweeper.cpp simulation\src\ini_params.cpp simulation\src\timer.cpp
+         matrix2d.cpp
+         vector2d.cpp
+         main.cpp
+         utils.cpp
+         constants.cpp
+         member.cpp
+         network.cpp
+         neural_network_exception.cpp
+         neuron.cpp
+         output_node.cpp
+         population.cpp
+         rand_gen.cpp
+         util.cpp
+         restricted.cpp
+         restricted_range_exception.cpp
+         srestricted.cpp
+         mine_sweeper.cpp
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(40): error C2061: syntax error : identifier 'vector'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(43): error C2061: syntax error : identifier 'vector'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(46): error C2146: syntax error : missing ';' before identifier 'GetClosestMine'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(46): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(46): error C2061: syntax error : identifier 'vector'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(46): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(46): warning C4183: 'GetClosestMine': missing return type; assumed to be a member function returning 'int'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(49): error C2061: syntax error : identifier 'vector'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(55): error C2146: syntax error : missing ';' before identifier 'Position'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(55): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(55): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(55): warning C4183: 'Position': missing return type; assumed to be a member function returning 'int'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(61): error C2061: syntax error : identifier 'vector'
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(55): error C2440: 'return' : cannot convert from 'const Vector2D' to 'int'
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(57): error C2065: 'm_dFitness' : undeclared identifier
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(59): error C2065: 'm_dFitness' : undeclared identifier
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(61): error C2065: 'm_ItsBrain' : undeclared identifier
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(61): error C2228: left of '.PutWeights' must have class/struct/union
+                 type is ''unknown-type''
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(61): error C2065: 'w' : undeclared identifier
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(63): error C2065: 'm_ItsBrain' : undeclared identifier
+     1>C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\simulation\incl\mine_sweeper.h(63): error C2228: left of '.GetNumberOfWeights' must have class/struct/union
+                 type is ''unknown-type''
+     1>simulation\src\mine_sweeper.cpp(7): error C2653: 'CParams' : is not a class or namespace name
+     1>simulation\src\mine_sweeper.cpp(7): error C2065: 'dTwoPi' : undeclared identifier
+     1>simulation\src\mine_sweeper.cpp(7): error C3861: 'RandFloat': identifier not found
+     1>simulation\src\mine_sweeper.cpp(11): error C2653: 'CParams' : is not a class or namespace name
+     1>simulation\src\mine_sweeper.cpp(11): error C2065: 'iSweeperScale' : undeclared identifier
+     1>simulation\src\mine_sweeper.cpp(14): fatal error C1903: unable to recover from previous error(s); stopping compilation
+         ini_params.cpp
+         timer.cpp
+     1>Done Building Project "C:\Users\user\Desktop\Neural-Networks\neural_neworks_simulation\neural_neworks_simulation\neural_neworks_simulation.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:13.78
