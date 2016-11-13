@@ -58,4 +58,4 @@ namespace neural_networks
 		const unsigned long roulette_wheel(const unsigned long dropped_memb_indx); // roulette wheel selection algorithm
 		const unsigned long roulette_wheel(const std::set<const unsigned long>& dropped_memb_indices); // roulette wheel selection algorithm
 	};
-}
+};

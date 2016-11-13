@@ -72,6 +72,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="neural_neworks_simulation.ico" />
@@ -99,11 +103,13 @@
     <ClInclude Include="restricted_range\incl\restricted.h" />
     <ClInclude Include="restricted_range\incl\restricted_range_exception.h" />
     <ClInclude Include="restricted_range\incl\srestricted.h" />
-    <ClInclude Include="simulation\incl\CController.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="simulation\incl\controller.h" />
+    <ClInclude Include="simulation\incl\mine.h" />
     <ClInclude Include="simulation\incl\mine_sweeper.h" />
     <ClInclude Include="simulation\incl\ini_params.h" />
+    <ClInclude Include="simulation\incl\renderer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="simulation\incl\timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -123,11 +129,13 @@
     <ClCompile Include="restricted_range\src\restricted.cpp" />
     <ClCompile Include="restricted_range\src\restricted_range_exception.cpp" />
     <ClCompile Include="restricted_range\src\srestricted.cpp" />
-    <ClCompile Include="simulation\src\CController.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="simulation\src\controller.cpp" />
+    <ClCompile Include="simulation\src\mine.cpp" />
     <ClCompile Include="simulation\src\mine_sweeper.cpp" />
     <ClCompile Include="simulation\src\ini_params.cpp" />
+    <ClCompile Include="simulation\src\renderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="simulation\src\timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

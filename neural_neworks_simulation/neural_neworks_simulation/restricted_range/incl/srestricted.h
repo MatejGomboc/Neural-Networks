@@ -30,4 +30,4 @@ namespace restricted_range
 		T getMin(void) const;
 		T getMax(void) const;
 	};
-}
+};

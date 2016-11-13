@@ -5,7 +5,7 @@
 #include <vector>
 
 
-namespace linear_algebra
+namespace Linear_algebra
 {
 	class Matrix2D
 	{
@@ -39,4 +39,4 @@ namespace linear_algebra
 		//applys a transformation matrix to a 2D vector
 		Vector2D transform(const Vector2D& vector);
 	};
-}
+};

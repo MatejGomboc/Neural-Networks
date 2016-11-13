@@ -1,5 +1,6 @@
 #include "ini_params.h"
 #include <fstream>
+#include <exception>
 
 
 namespace Simulation
@@ -18,7 +19,7 @@ namespace Simulation
 		std::ifstream grab("params.ini");
 
 		//check file exists
-		if (!grab) throw("Cannot find ini file.");
+		if (!grab) throw(std::exception("Cannot find ini file."));
 
 		//load in from the file
 		char ParamDescription[40];
@@ -30,15 +31,15 @@ namespace Simulation
 		grab >> ParamDescription;
 		grab >> m_dMaxSpeed;
 		grab >> ParamDescription;
-		grab >> m_iSweeperScale;
+		grab >> m_dSweeperScale;
 		grab >> ParamDescription;
-		grab >> m_iNumMines;
+		grab >> m_ulNumMines;
 		grab >> ParamDescription;
-		grab >> m_iNumSweepers;
+		grab >> m_ulNumSweepers;
 		grab >> ParamDescription;
-		grab >> m_iNumTicks;
+		grab >> m_ulNumTicks;
 		grab >> ParamDescription;
-		grab >> m_dMineScale;
+		grab >> m_dMineSize;
 	}
 
 
@@ -48,11 +49,11 @@ namespace Simulation
 	m_fFramesPerSecond(0.0f),
 	m_dMaxTurnRate(0.0),
 	m_dMaxSpeed(0.0),
-	m_iSweeperScale(0),
-	m_iNumSweepers(0),
-	m_iNumMines(0),
-	m_iNumTicks(0),
-	m_dMineScale(0.0)
+	m_dSweeperScale(0.0),
+	m_ulNumSweepers(0),
+	m_ulNumMines(0),
+	m_ulNumTicks(0),
+	m_dMineSize(0.0)
 	{
 		loadIniParameters();
 	}

@@ -1,7 +1,7 @@
 #include "matrix2d.h"
 
 
-namespace linear_algebra
+namespace Linear_algebra
 {
 	Matrix2D::Matrix2D(const double _11, const double _12, const double _13,
 		const double _21, const double _22, const double _23,

@@ -54,4 +54,4 @@ namespace restricted_range
 	{
 		value.m_max = max;
 	}
-}
+};

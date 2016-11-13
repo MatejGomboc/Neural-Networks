@@ -1,40 +1,44 @@
 #pragma once
 
 #include <vector>
-#include "matrix2d.h"
 #include "vector2d.h"
+#include "mine.h"
 
 
-class Mine_sweeper //: public neural_networks::Member
+namespace Simulation
 {
-private:
-	//it's position in the world
-	Vector2D m_vPosition;
+	class Mine_sweeper //: public neural_networks::Member
+	{
+	public:
+		//it's position in the world
+		Linear_algebra::Vector2D m_vPosition;
 
-	//orientation and speed of the sweeper
-	//to store outputs from the NN
-	double m_dRotation;
-	double m_dSpeed;
+		//orientation and speed of the sweeper
+		//to store outputs from the NN
+		double m_dRotation;
+		double m_dSpeed;
 
-	//the sweeper's score 
-	double m_dScore;
+		//the sweeper's score 
+		unsigned long m_ulScore;
 
-	unsigned long m_ulClosestMine;
+		//index of the closest mine
+		unsigned long m_ulClosestMine;
 
-public:
-	Mine_sweeper();
+	public:
+		Mine_sweeper(void);
 
-	void reset();
+		void reset(void);
 
-	//updates the NN with information from the sweeper's enviroment
-	void update(const std::vector<Vector2D>& mines);
+		//updates the NN with information from the sweeper's enviroment
+		void update(const std::vector<Mine>& mines);
 
-	//used to transform the sweepers vertices prior to rendering
-	void worldTransform(const double sweeper_scale);
+		//used to transform the sweepers vertices prior to rendering
+		void worldTransform(const double sweeper_scale);
 
-	//returns a vector to the closest mine
-	Vector2D getClosestMine(const std::vector<Vector2D>& mines);
+		//returns a vector to the closest mine
+		Linear_algebra::Vector2D getClosestMine(const std::vector<Mine>& mines);
 
-	//checks to see if the minesweeper has 'collected' a mine
-	bool checkCollision(const std::vector<Vector2D>& mines, const double mine_size);
+		//checks to see if the minesweeper has 'collected' a mine
+		void checkCollision(std::vector<Mine>& mines, const double mine_size);
+	};
 };

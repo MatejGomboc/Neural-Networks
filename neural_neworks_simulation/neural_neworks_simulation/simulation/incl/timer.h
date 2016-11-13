@@ -39,4 +39,4 @@ namespace Simulation
 
 		float getFPS() const;
 	};
-}
+};

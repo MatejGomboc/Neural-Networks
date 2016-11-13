@@ -26,19 +26,19 @@ namespace Simulation
 		double m_dMaxSpeed;
 
 		//for controlling the size of the sweepers
-		int m_iSweeperScale;
+		double m_dSweeperScale;
 
 		//--------------------------------------controller parameters
 
-		int m_iNumSweepers;
+		unsigned long m_ulNumSweepers;
 
-		int m_iNumMines;
+		unsigned long m_ulNumMines;
 
 		//number of time steps we allow for each generation to live
-		int m_iNumTicks;
+		unsigned long m_ulNumTicks;
 
-		//scaling factor for mines
-		double m_dMineScale;
+		//size of mines
+		double m_dMineSize;
 
 		//--------------------------------------initialization function
 
@@ -46,4 +46,4 @@ namespace Simulation
 
 		Ini_params(void);
 	};
-}
+};

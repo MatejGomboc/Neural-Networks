@@ -82,9 +82,6 @@
     <ClInclude Include="linear_algebra\incl\matrix2d.h">
       <Filter>Header Files\linear_algebra</Filter>
     </ClInclude>
-    <ClInclude Include="simulation\incl\CController.h">
-      <Filter>Header Files\simulation</Filter>
-    </ClInclude>
     <ClInclude Include="simulation\incl\mine_sweeper.h">
       <Filter>Header Files\simulation</Filter>
     </ClInclude>
@@ -124,6 +121,15 @@
     <ClInclude Include="restricted_range\incl\srestricted.h">
       <Filter>Header Files\restricted_range</Filter>
     </ClInclude>
+    <ClInclude Include="simulation\incl\mine.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\controller.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="simulation\incl\renderer.h">
+      <Filter>Header Files\simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\src\main.cpp">
@@ -143,9 +149,6 @@
     </ClCompile>
     <ClCompile Include="linear_algebra\src\matrix2d.cpp">
       <Filter>Source Files\linear_algebra</Filter>
-    </ClCompile>
-    <ClCompile Include="simulation\src\CController.cpp">
-      <Filter>Source Files\simulation</Filter>
     </ClCompile>
     <ClCompile Include="simulation\src\mine_sweeper.cpp">
       <Filter>Source Files\simulation</Filter>
@@ -185,6 +188,15 @@
     </ClCompile>
     <ClCompile Include="restricted_range\src\srestricted.cpp">
       <Filter>Source Files\restricted_range</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\mine.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\controller.cpp">
+      <Filter>Source Files\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="simulation\src\renderer.cpp">
+      <Filter>Source Files\simulation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

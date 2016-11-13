@@ -16,4 +16,4 @@ namespace Utils
 
 	// clamps the first argument between the second two
 	void clamp(double &arg, const double min, const double max);
-}
+};
