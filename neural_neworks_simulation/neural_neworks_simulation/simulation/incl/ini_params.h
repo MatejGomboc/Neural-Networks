@@ -19,8 +19,8 @@ namespace Simulation
 
 		//--------------------------------------used to define the sweepers
 
-		//limits how fast the sweepers can turn
-		double m_dMaxTurnRate;
+		//number of neurons in sweeper's brain
+		unsigned long m_ulNumNeurons;
 
 		//limits how fast the sweepers can move
 		double m_dMaxSpeed;

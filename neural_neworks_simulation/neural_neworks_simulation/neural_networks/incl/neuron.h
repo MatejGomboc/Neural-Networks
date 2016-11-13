@@ -39,6 +39,9 @@ namespace neural_networks
 
 		// calculate new output value and place it in temporal storage
 		void calculate(const std::vector<Neuron>& neurons, const std::vector<restricted_range::srestricted<double, 0, 1>>& inputs);
+
+		//reset neuron's output and temp_output
+		void reset(void);
 	private:
 		// neuron's activation function
 		static double activation_function(const double summ, const double steepness, const double treshold, const double simetricity);

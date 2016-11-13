@@ -2,6 +2,7 @@
 #include "mine_sweeper.h"
 #include "mine.h"
 #include "ini_params.h"
+#include "population.h"
 
 
 namespace Simulation
@@ -18,7 +19,7 @@ namespace Simulation
 		//let's create the mine sweepers
 		for (unsigned long i = 0; i < params.m_ulNumSweepers; ++i)
 		{
-			m_sweepers.push_back(Mine_sweeper());
+			m_sweepers.push_back(Mine_sweeper(params.m_ulNumNeurons));
 		}
 
 		//initialize mines in random positions within the application window
@@ -47,7 +48,7 @@ namespace Simulation
 			for (unsigned long i = 0; i < m_sweepers.size(); ++i)
 			{
 				//update the NN and position
-				m_sweepers[i].update(m_mines);
+				m_sweepers[i].update(m_mines, params);
 
 				//see if it has found a mine
 				m_sweepers[i].checkCollision(m_mines, params.m_dMineSize);

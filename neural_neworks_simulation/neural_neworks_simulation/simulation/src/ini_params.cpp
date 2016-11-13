@@ -27,7 +27,7 @@ namespace Simulation
 		grab >> ParamDescription;
 		grab >> m_fFramesPerSecond;
 		grab >> ParamDescription;
-		grab >> m_dMaxTurnRate;
+		grab >> m_ulNumNeurons;
 		grab >> ParamDescription;
 		grab >> m_dMaxSpeed;
 		grab >> ParamDescription;
@@ -47,7 +47,7 @@ namespace Simulation
 	m_iWindowWidth(400),
 	m_iWindowHeight(400),
 	m_fFramesPerSecond(0.0f),
-	m_dMaxTurnRate(0.0),
+	m_ulNumNeurons(0),
 	m_dMaxSpeed(0.0),
 	m_dSweeperScale(0.0),
 	m_ulNumSweepers(0),

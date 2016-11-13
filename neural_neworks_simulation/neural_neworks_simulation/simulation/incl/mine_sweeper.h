@@ -3,11 +3,13 @@
 #include <vector>
 #include "vector2d.h"
 #include "mine.h"
+#include "member.h"
+#include "ini_params.h"
 
 
 namespace Simulation
 {
-	class Mine_sweeper //: public neural_networks::Member
+	class Mine_sweeper : public neural_networks::Member
 	{
 	public:
 		//it's position in the world
@@ -25,12 +27,12 @@ namespace Simulation
 		unsigned long m_ulClosestMine;
 
 	public:
-		Mine_sweeper(void);
+		Mine_sweeper(const unsigned long N_neurons);
 
-		void reset(void);
+		virtual void reset(void);
 
 		//updates the NN with information from the sweeper's enviroment
-		void update(const std::vector<Mine>& mines);
+		void update(const std::vector<Mine>& mines, const Ini_params& params);
 
 		//used to transform the sweepers vertices prior to rendering
 		void worldTransform(const double sweeper_scale);

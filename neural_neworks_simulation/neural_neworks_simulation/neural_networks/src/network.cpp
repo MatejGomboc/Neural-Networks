@@ -48,6 +48,7 @@ namespace neural_networks
 	}
 
 
+	// calculate new output values from current input values
 	void Network::calculate(void)
 	{
 		for(unsigned long i = 0; i < m_neurons.size(); i++)
@@ -63,6 +64,26 @@ namespace neural_networks
 		for(unsigned long i = 0; i < m_output_nodes.size(); i++)
 		{
 			m_dOutputs[i] = m_output_nodes[i].calculate(m_neurons);
+		}
+	}
+
+
+	// reset inputs, outputs and neuron outputs and temp_outputs
+	void Network::reset(void)
+	{
+		for(unsigned long i = 0; i < m_dInputs.size(); i++)
+		{
+			m_dInputs[i] = 0.0;
+		}
+
+		for(unsigned long i = 0; i < m_dOutputs.size(); i++)
+		{
+			m_dOutputs[i] = 0.0;
+		}
+
+		for (unsigned long i = 0; i < m_neurons.size(); i++)
+		{
+			m_neurons[i].reset();
 		}
 	}
 };

@@ -7,6 +7,8 @@
 #include "ini_params.h"
 #include "mine.h"
 #include "rand_gen.h"
+#include "member.h"
+#include "util.h"
 
 using namespace Linear_algebra;
 using namespace neural_networks;
@@ -16,23 +18,26 @@ namespace Simulation
 {
 	//-----------------------------------constructor-------------------------
 	//-----------------------------------------------------------------------
-	Mine_sweeper::Mine_sweeper() :
+	Mine_sweeper::Mine_sweeper(const unsigned long N_neurons) :
 		m_vPosition(Vector2D(random_double(0.0, 1.0), random_double(0.0, 1.0))),
 		m_dRotation(random_double(0.0, 1.0)),
 		m_dSpeed(random_double(0.0, 1.0)),
 		m_ulScore(0),
-		m_ulClosestMine(0)
+		m_ulClosestMine(0),
+		Member(2, N_neurons, 2)
 	{
 	}
 
 
 	//-------------------------------------------reset()--------------------
 	//
-	//	Resets the sweeper's position, core and rotation.
+	//	Resets the sweeper's position, score and rotation.
 	//
 	//----------------------------------------------------------------------
 	void Mine_sweeper::reset()
 	{
+		Member::reset();
+
 		//reset the sweepers positions
 		m_vPosition = Vector2D(random_double(0.0, 1.0), random_double(0.0, 1.0));
 
@@ -87,31 +92,34 @@ namespace Simulation
 	//	and acceleration and apply to current velocity vector.
 	//
 	//-----------------------------------------------------------------------
-	void Mine_sweeper::update(const std::vector<Mine>& mines)
+	void Mine_sweeper::update(const std::vector<Mine>& mines, const Ini_params& params)
 	{
-		//get vector to closest mine
+		//get vector to the closest mine
 		Vector2D vClosestMine = getClosestMine(mines);
 
-		//normalise it
+		//normalize it
 		vClosestMine.normalize();
 
-		////add in vector to closest mine
+		//add in vector to the closest mine
+		Member::m_brain.m_dInputs[0] = vClosestMine.m_dX;
+		Member::m_brain.m_dInputs[1] = vClosestMine.m_dY;
 
-		////add in sweepers look at vector
+		//update the brain
+		Member::m_brain.calculate();
 
-		//update the brain and get feedback
+		//get the outputs
+		m_dSpeed = Member::m_brain.m_dOutputs[0] * params.m_dMaxSpeed;
+		m_dRotation = Member::m_brain.m_dOutputs[1] * params.m_dTwoPi;
 
-		//assign the outputs to the sweepers left & right tracks
-
-		//calculate steering forces
-
-		//clamp rotation
-
-		//update Look At 
+		//calculate vector of translation
+		Vector2D translation(m_dSpeed * cos(m_dRotation), m_dSpeed * sin(m_dRotation));
 
 		//update position
+		m_vPosition += translation;
 
 		//wrap around window limits
+		m_vPosition.m_dX = wrap(m_vPosition.m_dX, 0.0, 1.0);
+		m_vPosition.m_dY = wrap(m_vPosition.m_dY, 0.0, 1.0);
 	}
 
 

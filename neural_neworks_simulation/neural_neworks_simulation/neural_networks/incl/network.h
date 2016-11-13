@@ -30,5 +30,6 @@ namespace neural_networks
 		Network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs);
 		~Network(void);
 		void calculate(void); // calculate new output values from current input values
+		void reset(void); // reset inputs, outputs and neuron outputs and temp_outputs
 	};
 };

@@ -68,6 +68,14 @@ namespace neural_networks
 	}
 
 
+	//reset neuron's output and temp_output
+	void Neuron::reset(void)
+	{
+		m_dTemp = 0.0;
+		m_dOutput = 0.0;
+	}
+
+
 	// place temporal storage of output value into current output value
 	void Neuron::propagate(void)
 	{

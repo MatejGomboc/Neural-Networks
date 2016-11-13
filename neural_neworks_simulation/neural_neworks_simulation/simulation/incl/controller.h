@@ -4,6 +4,7 @@
 #include "mine_sweeper.h"
 #include "mine.h"
 #include "ini_params.h"
+#include "population.h"
 
 
 namespace Simulation
@@ -27,7 +28,6 @@ namespace Simulation
 		unsigned long m_ulGenerations;
 
 	public:
-
 		Controller(const Ini_params& params);
 	
 		void update(const Ini_params& params);
