@@ -22,7 +22,7 @@ namespace neural_networks
 
 
 	Population::Population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
-			const unsigned long N_memb_output_variables, const Mutation_params mutation_params)
+			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params)
 	{
 		if (N_members <= 0) throw Population_exception("No members in this population.");
 		if (N_memb_input_variables <= 0) throw Population_exception("No member's input variables.");
@@ -35,6 +35,24 @@ namespace neural_networks
 		{
 			m_members.push_back(Member(N_memb_input_variables, N_memb_neurons, N_memb_output_variables));
 		}
+
+		m_mutation_params = mutation_params;
+	}
+
+
+	Population::Population(std::vector<Member>& members, const Mutation_params& mutation_params)
+	{
+		if (members.size() <= 0) throw Population_exception("No members in this population.");
+
+		unsigned long N_memb_input_variables = members[0].m_brain.m_dInputs.size();
+		unsigned long N_memb_neurons = members[0].m_brain.m_neurons.size();
+		unsigned long N_memb_output_variables = members[0].m_brain.m_neurons.size();
+		//TODO!!!
+		if (N_memb_input_variables <= 0) throw Population_exception("No member's input variables.");
+		if (N_memb_neurons <= 0) throw Population_exception("Zero member's neurons.");
+		if (N_memb_output_variables <= 0) throw Population_exception("No member's output variables.");
+
+		m_members = members;
 
 		m_mutation_params = mutation_params;
 	}

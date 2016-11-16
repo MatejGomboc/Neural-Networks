@@ -44,7 +44,8 @@ namespace neural_networks
 		std::vector<Member> m_members; // array of population members
 	public:
 		Population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
-			const unsigned long N_memb_output_variables, const Mutation_params mutation_params);
+			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params);
+		Population(std::vector<Member>& members, const Mutation_params& mutation_params);
 		~Population(void);
 		void calculate_outputs(void); // calculate output values of members
 		void mutate(void); // mutate members of population

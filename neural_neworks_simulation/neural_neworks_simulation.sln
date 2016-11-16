@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_neworks_simulation", "neural_neworks_simulation\neural_neworks_simulation.vcxproj", "{25060948-03A7-4FAC-AA85-C3217C44C1E0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_networks_testing", "..\neural_networks_testing\neural_networks_testing.vcxproj", "{D589CD73-D57F-42ED-893D-9F6AC6666D19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{25060948-03A7-4FAC-AA85-C3217C44C1E0}.Debug|Win32.Build.0 = Debug|Win32
 		{25060948-03A7-4FAC-AA85-C3217C44C1E0}.Release|Win32.ActiveCfg = Release|Win32
 		{25060948-03A7-4FAC-AA85-C3217C44C1E0}.Release|Win32.Build.0 = Release|Win32
+		{D589CD73-D57F-42ED-893D-9F6AC6666D19}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D589CD73-D57F-42ED-893D-9F6AC6666D19}.Debug|Win32.Build.0 = Debug|Win32
+		{D589CD73-D57F-42ED-893D-9F6AC6666D19}.Release|Win32.ActiveCfg = Release|Win32
+		{D589CD73-D57F-42ED-893D-9F6AC6666D19}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

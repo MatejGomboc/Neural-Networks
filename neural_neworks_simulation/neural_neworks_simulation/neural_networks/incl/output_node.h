@@ -25,6 +25,7 @@ namespace neural_networks
 		explicit Output_node(const unsigned long N_neurons);
 		~Output_node(void);
 		double calculate(const std::vector<Neuron>& neurons) const; // calculate new output value from outputs of neurons
+		void test(const unsigned long N_neurons) const; // test output node for valid number of weights
 	};
 };
 
