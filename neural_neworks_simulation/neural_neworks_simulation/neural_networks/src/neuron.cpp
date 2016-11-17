@@ -29,7 +29,7 @@ namespace neural_networks
 
 		m_vdWeights.reserve(N_weights);
 
-		for (unsigned long i = 0; i != N_weights; i++)
+		for (unsigned long i = 0; i < N_weights; i++)
 		{
 			m_vdWeights.push_back(restricted_range::srestricted<double, 0, 1>(random_double(0.0, 1.0)));
 		}
@@ -45,19 +45,24 @@ namespace neural_networks
 	 // calculate new output value and place it in temporal storage
 	void Neuron::calculate(const std::vector<Neuron>& neurons, const std::vector<restricted_range::srestricted<double, 0, 1>>& inputs)
 	{
+		if(neurons.size() == 0)
+			throw Neuron_exception("Zero inputs from other neurons to this neuron.");
+		if(inputs.size() == 0)
+			throw Neuron_exception("Zero inputs from neural network inputs to this neuron.");
+
 		// N_weights = N_neurons + N_inputs
 		test(neurons.size() + inputs.size());
 
 		double summ = 0.0; // (0.0 - (N_neurons + N_inputs))
 		unsigned long j = 0;
 
-		for(unsigned long i = 0; i != inputs.size(); i++)
+		for(unsigned long i = 0; i < inputs.size(); i++)
 		{
 			summ += inputs[i] * m_vdWeights[j];
 			j++;
 		}
 
-		for(unsigned long i = 0; i != neurons.size(); i++)
+		for(unsigned long i = 0; i < neurons.size(); i++)
 		{
 			summ += neurons[i].m_dOutput * m_vdWeights[j];
 			j++;
@@ -78,9 +83,14 @@ namespace neural_networks
 	//test neuron for correct number of weights
 	void Neuron::test(const unsigned long N_weights) const
 	{
+		if(m_vdWeights.size() == 0)
+			throw Neuron_exception("This neuron has zero weights.");
+
 		// N_weights = N_neurons + N_inputs
 		if(N_weights != m_vdWeights.size())
-			throw Neuron_exception("Number of inputs from network inputs and other neurons' outputs does not match the number of weights in neuron.");
+			throw Neuron_exception("Invalid number of weights in this neuron.");
+
+		if(m_dTreshold > static_cast<double>(m_vdWeights.size())) throw "Neuron's treshold value is greater than the number of weights in this neuron.";
 	}
 
 

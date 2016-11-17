@@ -10,23 +10,52 @@ namespace neural_networks
 	{
 		void debug_neuron(void)
 		{
-			const unsigned long N_weights = 100;
+			// test neuron's constructor for bugs
 
-			Neuron test_neuron(N_weights);
+			const unsigned long N_weights = random_int(1, 100);
 
-			debug_neuron(N_weights, test_neuron);
+			Neuron test_neuron1(N_weights);
+
+			debug_neuron(N_weights, test_neuron1);
+
+			// test neuron's calculation function (normal case)
+
+			Neuron test_neuron2(2);
+
+			test_neuron2.calculate(
+
+			// test neuron's calculation function (in case of zero neuron inputs)
+			try
+			{
+			}
+			catch(...)
+			{
+			}
+
+			// test neuron's calculation function (in case of zero neural network inputs)
+			try
+			{
+			}
+			catch(...)
+			{
+			}
+
+			// user should not be able to create a neuron with zero weights
+			try
+			{
+				Neuron test_neuron3(0);
+			}
+			catch(...)
+			{
+				return;
+			}
+
+			throw Neuron_exception("Neuron with zero weights created. Check constructor.");
 		}
 
 		void debug_neuron(const unsigned long N_weights, const Neuron &test_neuron)
 		{
-			if(test_neuron.m_vdWeights.size() != N_weights) throw "Invalid number of weights in neuron.";
-
-			if(test_neuron.m_dTreshold > static_cast<double>(test_neuron.m_vdWeights.size())) throw "Invalid value of neuron's treshold value.";
-
-			for (unsigned long i = 0; i < test_neuron.m_vdWeights.size(); i++)
-			{
-				if((test_neuron.m_vdWeights[i] > 1.0) || (test_neuron.m_vdWeights[i] < 0.0)) throw "Invalid value of neuron's weight.";
-			}
+			test_neuron.test(N_weights);
 		}
 	};
 };

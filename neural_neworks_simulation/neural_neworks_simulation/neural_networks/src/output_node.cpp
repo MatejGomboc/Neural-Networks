@@ -47,6 +47,9 @@ namespace neural_networks
 	// test output node for valid number of weights
 	void Output_node::test(const unsigned long N_neurons) const
 	{
+		if(m_vdWeights.size() == 0)
+			throw Output_node_exception("This output node has zero weights.");
+
 		if(N_neurons != m_vdWeights.size())
 			throw Output_node_exception("Number of inputs from neurons' outputs does not match the number of weights in output node.");
 	}

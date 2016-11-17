@@ -9,9 +9,9 @@ namespace neural_networks
 {
 	Network::Network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs)
 	{
-		if (N_inputs <= 0) throw Network_exception("Invalid number of neural network inputs.");
-		if (N_outputs <= 0) throw Network_exception("Invalid number of neural network outputs.");
-		if (N_neurons <= 0) throw Network_exception("Invalid number of neurons in neural network.");
+		if (N_inputs <= 0) throw Network_exception("Cannot create neural network with zero inputs.");
+		if (N_outputs <= 0) throw Network_exception("Cannot create neural network with zero outputs.");
+		if (N_neurons <= 0) throw Network_exception("Cannot create neural network with zero neurons.");
 
 		m_dInputs.reserve(N_inputs);
 		for(unsigned long i = 0; i < N_inputs; i++)
@@ -51,6 +51,8 @@ namespace neural_networks
 	// calculate new output values from current input values
 	void Network::calculate(void)
 	{
+		test();
+
 		for(unsigned long i = 0; i < m_neurons.size(); i++)
 		{
 			m_neurons[i].calculate(m_neurons, m_dInputs);
@@ -84,6 +86,32 @@ namespace neural_networks
 		for (unsigned long i = 0; i < m_neurons.size(); i++)
 		{
 			m_neurons[i].reset();
+		}
+	}
+
+
+	void Network::test(void) const // test neural network for correct number of neurons and output nodes, also test each one of them
+	{
+		if(m_dInputs.size() == 0)
+			throw Network_exception("This neural network has zero inputs.");
+		if(m_neurons.size() == 0)
+			throw Network_exception("This neural network has zero neurons.");
+		if(m_dOutputs.size() == 0)
+			throw Network_exception("This neural network has zero outputs.");
+		if(m_output_nodes.size() == 0)
+			throw Network_exception("This neural network has zero output nodes.");
+
+		if(m_dOutputs.size() != m_output_nodes.size())
+			throw Network_exception("Number of outputs of neural network does not match the number of output nodes in this network.");
+
+		for (unsigned long i = 0; i < m_neurons.size(); i++)
+		{
+			m_neurons[i].test(m_neurons.size() + m_dInputs.size());
+		}
+
+		for (unsigned long i = 0; i < m_output_nodes.size(); i++)
+		{
+			m_output_nodes[i].test(m_neurons.size());
 		}
 	}
 };

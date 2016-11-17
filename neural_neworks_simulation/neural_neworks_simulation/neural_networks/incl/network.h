@@ -31,5 +31,6 @@ namespace neural_networks
 		~Network(void);
 		void calculate(void); // calculate new output values from current input values
 		void reset(void); // reset inputs, outputs and neuron outputs and temp_outputs
+		void test(void) const; // test neural network for correct number of neurons and output nodes, also test each one of them
 	};
 };
