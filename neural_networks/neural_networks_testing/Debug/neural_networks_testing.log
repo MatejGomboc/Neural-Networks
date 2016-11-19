@@ -1,0 +1,48 @@
+﻿Build started 19.11.2016 15:49:24.
+     1>Project "C:\Users\user\Desktop\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\neural_networks_testing.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Program Files\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\neural_networks\debug\src\debug_nn_util.cpp
+         debug_nn_util.cpp
+       Link:
+         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Debug\neural_networks_testing.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Program Files\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\neural_networks_testing.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Debug\neural_networks_testing.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Debug\neural_networks_testing.lib" /MACHINE:X86 Debug\matrix2d.obj
+         Debug\vector2d.obj
+         Debug\debug_member.obj
+         Debug\debug_network.obj
+         Debug\debug_neuron.obj
+         Debug\debug_nn_util.obj
+         Debug\debug_output_node.obj
+         Debug\debug_population.obj
+         Debug\debug_rand_gen.obj
+         Debug\constants.obj
+         Debug\member.obj
+         Debug\network.obj
+         Debug\neural_network_exception.obj
+         Debug\neuron.obj
+         Debug\output_node.obj
+         Debug\population.obj
+         Debug\rand_gen.obj
+         Debug\nn_util.obj
+         Debug\utils.obj
+         Debug\main.obj
+         Debug\restricted.obj
+         Debug\restricted_range_exception.obj
+         Debug\srestricted.obj
+         Debug\controller.obj
+         Debug\ini_params.obj
+         Debug\mine.obj
+         Debug\mine_sweeper.obj
+         Debug\timer.obj
+     1>matrix2d.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+         neural_networks_testing.vcxproj -> C:\Users\user\Desktop\Neural-Networks\neural_networks\Debug\neural_networks_testing.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Debug\neural_networks_testing.exe;#1" /manifest Debug\neural_networks_testing.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\neural_networks_testing.unsuccessfulbuild".
+         Touching "Debug\neural_networks_testing.lastbuildstate".
+     1>Done Building Project "C:\Users\user\Desktop\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.49

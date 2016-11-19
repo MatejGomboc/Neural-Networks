@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_networks_testing", "neural_networks_testing\neural_networks_testing.vcxproj", "{C66DD050-7F1A-453A-A3E5-7F074A266491}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Debug|Win32.Build.0 = Debug|Win32
+		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Release|Win32.ActiveCfg = Release|Win32
+		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
