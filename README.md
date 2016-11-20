@@ -1,6 +1,6 @@
 # Neural-Networks
 * generic neural network stub
-* training using genetic algorythm
+* training using genetic algorithm
 
 ## Structure
 
