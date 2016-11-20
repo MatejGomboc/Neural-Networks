@@ -10,6 +10,7 @@
 #include "debug_output_node.h"
 #include "debug_network.h"
 #include "debug_member.h"
+#include "debug_population.h"
 
 using namespace Neural_networks;
 
@@ -22,7 +23,7 @@ int main(int argc, char* argv[])
 		{
 			Debug::debug_nn_util();
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
@@ -35,7 +36,7 @@ int main(int argc, char* argv[])
 			Debug::debug_rand_gen_double("rand_test_output_histogram_double.csv");
 			Debug::debug_rand_gen_unsigned_long("rand_test_output_histogram_int.csv");
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
@@ -47,7 +48,7 @@ int main(int argc, char* argv[])
 		{
 			Debug::debug_neuron();
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
@@ -59,7 +60,7 @@ int main(int argc, char* argv[])
 		{
 			Debug::debug_output_node();
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
@@ -71,7 +72,7 @@ int main(int argc, char* argv[])
 		{
 			Debug::debug_network();
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
@@ -83,12 +84,24 @@ int main(int argc, char* argv[])
 		{
 			Debug::debug_member();
 		}
-		catch(std::exception ex)
+		catch(std::exception& ex)
 		{
 			std::cout << ex.what() << std::endl;
 			while(true);
 		}
 		std::cout << "Debuging Member class successful." << std::endl << std::endl;
+
+		std::cout << "Started debuging Population class." << std::endl;
+		try
+		{
+			Debug::debug_population();
+		}
+		catch(std::exception& ex)
+		{
+			std::cout << ex.what() << std::endl;
+			while(true);
+		}
+		std::cout << "Debuging Population class successful." << std::endl << std::endl;
 
 		//while(true);
 	}

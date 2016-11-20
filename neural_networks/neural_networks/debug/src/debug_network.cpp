@@ -20,6 +20,7 @@ namespace Neural_networks
 			const unsigned long N_outputs = random_unsigned_long(1, 100);
 
 			Network test_network1(N_inputs, N_neurons, N_outputs);
+			
 			debug_network(N_inputs, N_neurons, N_outputs, test_network1);
 
 			// if zero inputs
@@ -91,11 +92,11 @@ here2:		try
 
 		void debug_network(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Network& test_network)
 		{
-			test_network.test();
-
 			if(N_inputs != test_network.m_dInputs.size()) throw Network_exception("This neural network has invalid number of inputs.");
 			if(N_neurons != test_network.m_neurons.size()) throw Network_exception("This neural network has invalid number of neurons.");
 			if(N_outputs != test_network.m_dOutputs.size()) throw Network_exception("This neural network has invalid number of outputs.");
+
+			test_network.test();
 		}
 	};
 };

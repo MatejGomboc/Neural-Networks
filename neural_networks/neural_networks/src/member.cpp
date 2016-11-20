@@ -1,5 +1,4 @@
 #include "member.h"
-#include "constants.h"
 
 
 namespace Neural_networks
@@ -10,10 +9,17 @@ namespace Neural_networks
 	}
 
 
-	// reset member's fitness value and NN
+	// reset member's fitness value and brain
 	void Member::reset(void)
 	{
 		m_dFitness = 0.0;
 		m_brain.reset();
+	}
+
+
+	// test member's brain
+	void Member::test(void) const
+	{
+		m_brain.test();
 	}
 };

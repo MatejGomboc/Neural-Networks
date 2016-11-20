@@ -2,14 +2,13 @@
 #include "debug_network.h"
 #include "rand_gen.h"
 #include "member.h"
-#include <vector>
 
 
 namespace Neural_networks
 {
 	namespace Debug
 	{
-		extern void debug_member(void)
+		void debug_member(void)
 		{
 			const unsigned long N_inputs = random_unsigned_long(1, 100);
 			const unsigned long N_neurons = random_unsigned_long(1, 100);
@@ -21,7 +20,7 @@ namespace Neural_networks
 		}
 
 
-		extern void debug_member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Member& test_member)
+		void debug_member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs, Member& test_member)
 		{
 			debug_network(N_inputs, N_neurons, N_outputs, test_member.m_brain);
 		}

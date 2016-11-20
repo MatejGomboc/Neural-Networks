@@ -42,21 +42,4 @@ namespace Utils
 	{
 		return std::wstring(arg.begin(), arg.end());
 	}
-
-
-	//-------------------------------------Clamp()-----------------------------------------
-	// clamps the first argument between the second two
-	//-------------------------------------------------------------------------------------
-	void clamp(double &arg, const double min, const double max)
-	{
-		if (arg < min)
-		{
-			arg = min;
-		}
-
-		if (arg > max)
-		{
-			arg = max;
-		}
-	}
 }

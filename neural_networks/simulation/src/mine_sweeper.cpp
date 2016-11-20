@@ -118,8 +118,8 @@ namespace Simulation
 		m_vPosition += translation;
 
 		//wrap around window limits
-		m_vPosition.m_dX = wrap(m_vPosition.m_dX, 0.0, 1.0);
-		m_vPosition.m_dY = wrap(m_vPosition.m_dY, 0.0, 1.0);
+		m_vPosition.m_dX = Util::wrap(m_vPosition.m_dX, 0.0, 1.0);
+		m_vPosition.m_dY = Util::wrap(m_vPosition.m_dY, 0.0, 1.0);
 	}
 
 

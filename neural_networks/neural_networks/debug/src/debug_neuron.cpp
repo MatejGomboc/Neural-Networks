@@ -14,7 +14,9 @@ namespace Neural_networks
 			// test neuron's constructor for bugs
 			const unsigned long N_weights = random_unsigned_long(1, 100);
 			Neuron test_neuron1(N_weights);
-			debug_neuron(N_weights, test_neuron1);
+
+			// test neuron for correct number of weights and corect threshold value
+			test_neuron1.test(N_weights);
 
 			// user should not be able to create a neuron with zero weights,
 			// otherwise it's an error
@@ -90,12 +92,6 @@ here:		std::vector<Restricted_range::srestricted<double, 0, 1>> inputs2;
 		{
 			test_constructor();
 			test_calculation();
-		}
-
-		void debug_neuron(const unsigned long N_weights, const Neuron &test_neuron)
-		{
-			// test neuron for correct number of weights and corect threshold value
-			test_neuron.test(N_weights);
 		}
 	};
 };

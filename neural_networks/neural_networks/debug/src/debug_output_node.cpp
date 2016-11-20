@@ -12,7 +12,8 @@ namespace Neural_networks
 			// test output node's constructor for bugs
 			const unsigned long N_neurons = random_unsigned_long(1, 100);
 			Output_node test_output_node1(N_neurons);
-			debug_output_node(N_neurons, test_output_node1);
+			
+			test_output_node1.test(N_neurons);
 
 			// user should not be able to create an output node with zero weights,
 			// otherwise it's an error
@@ -65,11 +66,6 @@ namespace Neural_networks
 		{
 			test_constructor();
 			test_calculation();
-		}
-
-		void debug_output_node(const unsigned long N_neurons, const Output_node &test_output_node)
-		{
-			test_output_node.test(N_neurons);
 		}
 	};
 };

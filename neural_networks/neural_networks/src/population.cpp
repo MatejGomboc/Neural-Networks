@@ -10,8 +10,8 @@
 namespace Neural_networks
 {
 	Mutation_params::Mutation_params(const double prob_mut_neuron_weight, const double prob_mut_output_weight,
-		const double prob_mut_neuron_treshold, double prob_mut_neuron_steepness,
-		double prob_mut_neuron_simetricity) :
+		const double prob_mut_neuron_treshold, const double prob_mut_neuron_steepness,
+		const double prob_mut_neuron_simetricity) :
 		m_dProb_mut_neuron_weight(prob_mut_neuron_weight),
 		m_dProb_mut_output_weight(prob_mut_output_weight),
 		m_dProb_mut_neuron_treshold(prob_mut_neuron_treshold),
@@ -21,40 +21,16 @@ namespace Neural_networks
 	}
 
 
-	Population::Population(const unsigned long N_members, const unsigned long N_memb_input_variables, const unsigned long N_memb_neurons,
-			const unsigned long N_memb_output_variables, const Mutation_params& mutation_params)
+	Population::Population(std::vector<Member>& members, const Mutation_params& mutation_params) :
+		m_members(members),
+		m_mutation_params(mutation_params)
 	{
-		if (N_members <= 0) throw Population_exception("No members in this population.");
-		if (N_memb_input_variables <= 0) throw Population_exception("No member's input variables.");
-		if (N_memb_neurons <= 0) throw Population_exception("Zero member's neurons.");
-		if (N_memb_output_variables <= 0) throw Population_exception("No member's output variables.");
+		if (m_members.size() <= 0) throw Population_exception("Number of members in population cannot be zero.");
 
-		m_members.reserve(N_members);
-
-		for (unsigned long i = 0; i < N_members; i++)
+		for(unsigned long i = 0; i < m_members.size(); i++)
 		{
-			m_members.push_back(Member(N_memb_input_variables, N_memb_neurons, N_memb_output_variables));
+			m_members[i].test();
 		}
-
-		m_mutation_params = mutation_params;
-	}
-
-
-	Population::Population(std::vector<Member>& members, const Mutation_params& mutation_params)
-	{
-		if (members.size() <= 0) throw Population_exception("No members in this population.");
-
-		unsigned long N_memb_input_variables = members[0].m_brain.m_dInputs.size();
-		unsigned long N_memb_neurons = members[0].m_brain.m_neurons.size();
-		unsigned long N_memb_output_variables = members[0].m_brain.m_neurons.size();
-		//TODO!!!
-		if (N_memb_input_variables <= 0) throw Population_exception("No member's input variables.");
-		if (N_memb_neurons <= 0) throw Population_exception("Zero member's neurons.");
-		if (N_memb_output_variables <= 0) throw Population_exception("No member's output variables.");
-
-		m_members = members;
-
-		m_mutation_params = mutation_params;
 	}
 
 
@@ -64,8 +40,22 @@ namespace Neural_networks
 	}
 
 
+	// check population for errors
+	void Population::test(void) const
+	{
+		if (m_members.size() <= 0) throw Population_exception("No members in this population.");
+
+		for(unsigned long i = 0; i < m_members.size(); i++)
+		{
+			m_members[i].test();
+		}
+	}
+
+
 	void Population::calculate_outputs(void)
 	{
+		if (m_members.size() <= 0) throw Population_exception("No members in this population.");
+
 		for(unsigned long k = 0; k < m_members.size(); k++) // for each member in population
 		{
 			m_members[k].m_brain.calculate();
@@ -73,7 +63,8 @@ namespace Neural_networks
 	}
 
 
-	void Population::mutate_value(const double probability, Restricted_range::restricted<double>& value_to_randomize)
+	void Population::mutate_value(const Restricted_range::srestricted<double, 0, 1> probability,
+		Restricted_range::restricted<double>& value_to_randomize)
 	{
 		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
 		{
@@ -81,7 +72,8 @@ namespace Neural_networks
 		}
 	}
 
-	void Population::mutate_value(const double probability, Restricted_range::srestricted<double, 0, 1>& value_to_randomize)
+	void Population::mutate_value(const Restricted_range::srestricted<double, 0, 1> probability,
+		Restricted_range::srestricted<double, 0, 1>& value_to_randomize)
 	{
 		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
 		{
@@ -89,7 +81,8 @@ namespace Neural_networks
 		}
 	}
 
-	void Population::mutate_value(const double probability, Restricted_range::srestricted<double, -1000, 1000>& value_to_randomize)
+	void Population::mutate_value(const Restricted_range::srestricted<double, 0, 1> probability,
+		Restricted_range::srestricted<double, -1000, 1000>& value_to_randomize)
 	{
 		if(random_double(0.0, 1.0) <= probability) // decission process with homogenous probability distribution
 		{
@@ -100,6 +93,8 @@ namespace Neural_networks
 
 	void Population::mutate(void)
 	{
+		test();
+
 		for(unsigned long k = 0; k < m_members.size(); k++) // for each member in population
 		{
 			for(unsigned long i = 0; i < m_members[k].m_brain.m_output_nodes.size(); i++) // for each output node
@@ -124,11 +119,15 @@ namespace Neural_networks
 				mutate_value(m_mutation_params.m_dProb_mut_neuron_treshold, m_members[k].m_brain.m_neurons[i].m_dTreshold);
 			}
 		}
+
+		test();
 	}
 
 
 	void Population::mate(void)
 	{
+		test();
+
 		unsigned long i_ma = 0;
 		unsigned long i_mb = 0;
 
@@ -175,10 +174,12 @@ namespace Neural_networks
 		}
 
 		m_members.swap(new_members);
+
+		test();
 	}
 
 
-	const unsigned long Population::roulette_wheel(void) // perform roulette wheel selection of population member
+	unsigned long Population::roulette_wheel(void) const // perform roulette wheel selection of population member
 	{
 		const double total_fitness = static_cast<double>(m_members.size());
 		const double rand_num = random_double(0.0, total_fitness);
@@ -201,8 +202,13 @@ namespace Neural_networks
 
 
 	// perform roulette wheel selection of population member
-	const unsigned long Population::roulette_wheel(const unsigned long dropped_memb_indx)
+	unsigned long Population::roulette_wheel(const unsigned long dropped_memb_indx) const
 	{
+		if(dropped_memb_indx >= m_members.size())
+			throw Population_exception("Invalid indx of dropped member in population during roulette wheel.");
+
+		if(m_members.size() == 1) return 0;
+
 		const double total_fitness = static_cast<double>(m_members.size()) - m_members[dropped_memb_indx].m_dFitness;
 		const double rand_num = random_double(0.0, total_fitness);
 		
@@ -227,7 +233,7 @@ namespace Neural_networks
 
 
 	// perform roulette wheel selection of population member
-	const unsigned long Population::roulette_wheel(const std::set<const unsigned long>& dropped_memb_indices)
+	unsigned long Population::roulette_wheel(const std::set<const unsigned long>& dropped_memb_indices) const
 	{
 		std::set<const unsigned long>::iterator it = --dropped_memb_indices.end();
 		if(*it > m_members.size()) throw Population_exception("Invalid indx of dropped member in population during roulette wheel.");

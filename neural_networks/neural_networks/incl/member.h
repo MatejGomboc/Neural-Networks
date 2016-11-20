@@ -13,6 +13,7 @@ namespace Neural_networks
 		Network m_brain; // neural network, "the brain" of the population member
 	public:
 		Member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs);
-		virtual void reset(void); // reset member's fitness value and NN
+		virtual void reset(void); // reset member's fitness value and brain
+		virtual void test(void) const; // test member's brain
 	};
 };
