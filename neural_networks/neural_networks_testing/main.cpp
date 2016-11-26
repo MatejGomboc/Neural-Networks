@@ -12,10 +12,18 @@
 #include "debug_member.h"
 #include "debug_population.h"
 
+#include <memory>
+
 using namespace Neural_networks;
 
 int main(int argc, char* argv[])
 {
+	std::vector<std::shared_ptr<Member>> members;
+	members.push_back(std::shared_ptr<Member>(new Member(2,2,2)));
+	Neural_networks::Population pop(members, Mutation_params());
+
+	while(true);
+
 	while(true)
 	{
 		std::cout << "Started debuging nn_util." << std::endl;
@@ -91,7 +99,7 @@ int main(int argc, char* argv[])
 		}
 		std::cout << "Debuging Member class successful." << std::endl << std::endl;
 
-		std::cout << "Started debuging Population class." << std::endl;
+		/*std::cout << "Started debuging Population class." << std::endl;
 		try
 		{
 			Debug::debug_population();
@@ -101,7 +109,7 @@ int main(int argc, char* argv[])
 			std::cout << ex.what() << std::endl;
 			while(true);
 		}
-		std::cout << "Debuging Population class successful." << std::endl << std::endl;
+		std::cout << "Debuging Population class successful." << std::endl << std::endl;*/
 
 		//while(true);
 	}

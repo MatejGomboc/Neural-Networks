@@ -6,6 +6,7 @@
 #include "neural_network_exception.h"
 #include <vector>
 #include <set>
+#include <memory>
 
 
 namespace Neural_networks
@@ -40,9 +41,9 @@ namespace Neural_networks
 	{
 	public:
 		Mutation_params m_mutation_params; // mutation parameters
-		std::vector<Member>& m_members; // array of population members
+		std::vector<std::shared_ptr<Member>>& m_members; // array of population members
 	public:
-		Population(std::vector<Member>& members, const Mutation_params& mutation_params);
+		Population(std::vector<std::shared_ptr<Member>>& members, const Mutation_params& mutation_params);
 		~Population(void);
 		void test(void) const; // check population for errors
 		void calculate_outputs(void); // calculate output values of members
