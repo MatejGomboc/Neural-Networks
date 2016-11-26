@@ -3,6 +3,7 @@
 #include "population.h"
 #include "member.h"
 #include <vector>
+#include <set>
 #include "rand_gen.h"
 #include "restricted.h"
 #include "srestricted.h"
@@ -99,7 +100,7 @@ namespace Neural_networks
 			// if no members in population
 			try
 			{
-				// this should throw an exception
+				// this must throw an exception
 				test_population.calculate_outputs();
 			}
 			catch(...)
@@ -112,6 +113,8 @@ namespace Neural_networks
 
 		static void test_roulette_wheel(void)
 		{
+			// prepare test population
+
 			unsigned long N_members = random_unsigned_long(1, 10);
 			unsigned long N_inputs = random_unsigned_long(1, 10);
 			unsigned long N_neurons = random_unsigned_long(1, 10);
@@ -132,22 +135,83 @@ namespace Neural_networks
 				test_population.m_members[i].m_dFitness = random_double(0.0, 1.0);
 			}
 
+			// test simple roulette wheel
+
 			unsigned long indx = test_population.m_members.size();
 			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
 			{
 				indx = test_population.roulette_wheel();
+
 				if(indx >= test_population.m_members.size())
 					throw Population_exception("Error in roulette wheel function.");
 			}
 
-			unsigned long dropped_indx = random_unsigned_long(0, test_population.m_members.size() - 1);
+			// test roulette wheel with one dropped index
+
+			const unsigned long dropped_indx = random_unsigned_long(0, test_population.m_members.size() - 1);
 			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
 			{
 				indx = test_population.roulette_wheel(dropped_indx);
+
 				if((indx >= test_population.m_members.size()) ||
-					((indx == dropped_indx) && (test_population.m_members.size() != 1)))
+					((indx == dropped_indx) && (test_population.m_members.size() > 1)))
 					throw Population_exception("Error in roulette wheel function.");
 			}
+
+			// test roulette wheel with multiple dropped indices
+
+			std::set<const unsigned long> dropped_indices;
+
+			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			{
+				if(random_double(0.0, 1.0) <= 0.5) dropped_indices.insert(i);
+			}
+
+			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			{
+				indx = test_population.roulette_wheel(dropped_indices);
+
+				if((indx >= test_population.m_members.size()) ||
+					((dropped_indices.find(indx) != dropped_indices.end())
+					&& (test_population.m_members.size() > 1)
+					&& (test_population.m_members.size() != dropped_indices.size())))
+					throw Population_exception("Error in roulette wheel function.");
+			}
+		}
+
+
+		void test_mutation_mating(void)
+		{
+			// prepare test population
+
+			unsigned long N_members = random_unsigned_long(1, 10);
+			unsigned long N_inputs = random_unsigned_long(1, 10);
+			unsigned long N_neurons = random_unsigned_long(1, 10);
+			unsigned long N_outputs = random_unsigned_long(1, 10);
+			
+			std::vector<Member> test_members;
+			test_members.reserve(N_members);
+
+			for(unsigned long i = 0; i < N_members; i++)
+			{
+				test_members.push_back(Member(N_inputs, N_neurons, N_outputs));
+			}
+
+			Population test_population(test_members, Mutation_params());
+
+			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			{
+				test_population.m_members[i].m_dFitness = random_double(0.0, 1.0);
+			}
+
+
+			// mutate members
+
+			test_population.mutate();
+
+			// mate members
+
+			test_population.mate();
 		}
 
 
@@ -157,6 +221,7 @@ namespace Neural_networks
 			test_mutate_value();
 			test_calculation();
 			test_roulette_wheel();
+			test_mutation_mating();
 		}
 	};
 };

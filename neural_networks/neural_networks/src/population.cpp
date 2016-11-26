@@ -145,13 +145,14 @@ namespace Neural_networks
 			i_mb = roulette_wheel(i_ma);
 
 			mating_weight_a = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 0.5 : (m_members[i_ma].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
-			mating_weight_b = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 0.5 : (m_members[i_mb].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
+			//mating_weight_b = (m_members[i_ma].m_dFitness == m_members[i_mb].m_dFitness == 0.0) ? 0.5 : (m_members[i_mb].m_dFitness / (m_members[i_ma].m_dFitness + m_members[i_mb].m_dFitness));
 
 			for(unsigned long i = 0; i < m_members[i_ma].m_brain.m_output_nodes.size(); i++) // for each output node
 			{
 				for(unsigned long j = 0; j < m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights.size(); j++) // for each weight
 				{
-					temp_member.m_brain.m_output_nodes[i].m_vdWeights[j] = mating_weight_a * (m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights[j]) + mating_weight_b * (m_members[i_mb].m_brain.m_output_nodes[i].m_vdWeights[j]);
+					//temp_member.m_brain.m_output_nodes[i].m_vdWeights[j] = mating_weight_a * (m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights[j]) + mating_weight_b * (m_members[i_mb].m_brain.m_output_nodes[i].m_vdWeights[j]);
+					temp_member.m_brain.m_output_nodes[i].m_vdWeights[j] = (random_double(0.0, 1.0) <= mating_weight_a) ? (m_members[i_ma].m_brain.m_output_nodes[i].m_vdWeights[j]) : (m_members[i_mb].m_brain.m_output_nodes[i].m_vdWeights[j]);
 				}
 			}
 
@@ -159,15 +160,18 @@ namespace Neural_networks
 			{
 				for(unsigned long j = 0; j < m_members[i_ma].m_brain.m_neurons[i].m_vdWeights.size(); j++) // for each weight
 				{
-					temp_member.m_brain.m_neurons[i].m_vdWeights[j] = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_vdWeights[j] + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_vdWeights[j];
+					//temp_member.m_brain.m_neurons[i].m_vdWeights[j] = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_vdWeights[j] + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_vdWeights[j];
+					temp_member.m_brain.m_neurons[i].m_vdWeights[j] = (random_double(0.0, 1.0) <= mating_weight_a) ? (m_members[i_ma].m_brain.m_neurons[i].m_vdWeights[j]) : (m_members[i_mb].m_brain.m_neurons[i].m_vdWeights[j]);
 				}
 
-				temp_member.m_brain.m_neurons[i].m_dSimetricity = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSimetricity + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSimetricity;
+				//temp_member.m_brain.m_neurons[i].m_dSimetricity = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSimetricity + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSimetricity;
+				temp_member.m_brain.m_neurons[i].m_dSimetricity = (random_double(0.0, 1.0) <= mating_weight_a) ? (m_members[i_ma].m_brain.m_neurons[i].m_dSimetricity) : (mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSimetricity);
 
-				temp_member.m_brain.m_neurons[i].m_dSteepness = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSteepness + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSteepness;
+				//temp_member.m_brain.m_neurons[i].m_dSteepness = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dSteepness + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dSteepness;
+				temp_member.m_brain.m_neurons[i].m_dSteepness = (random_double(0.0, 1.0) <= mating_weight_a) ? (m_members[i_ma].m_brain.m_neurons[i].m_dSteepness) : (m_members[i_mb].m_brain.m_neurons[i].m_dSteepness);
 
-				temp_member.m_brain.m_neurons[i].m_dTreshold = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dTreshold + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dTreshold;
-
+				//temp_member.m_brain.m_neurons[i].m_dTreshold = mating_weight_a * m_members[i_ma].m_brain.m_neurons[i].m_dTreshold + mating_weight_b * m_members[i_mb].m_brain.m_neurons[i].m_dTreshold;
+				temp_member.m_brain.m_neurons[i].m_dTreshold = (random_double(0.0, 1.0) <= mating_weight_a) ? (m_members[i_ma].m_brain.m_neurons[i].m_dTreshold) : (m_members[i_mb].m_brain.m_neurons[i].m_dTreshold);
 			}
 
 			new_members.push_back(temp_member);
@@ -181,7 +185,13 @@ namespace Neural_networks
 
 	unsigned long Population::roulette_wheel(void) const // perform roulette wheel selection of population member
 	{
-		const double total_fitness = static_cast<double>(m_members.size());
+		double total_fitness = 0.0;
+
+		for (unsigned long i = 0; i < m_members.size(); i++) 
+		{
+			total_fitness += m_members[i].m_dFitness;
+		}
+
 		const double rand_num = random_double(0.0, total_fitness);
 
 		double offset = 0.0;
@@ -205,11 +215,26 @@ namespace Neural_networks
 	unsigned long Population::roulette_wheel(const unsigned long dropped_memb_indx) const
 	{
 		if(dropped_memb_indx >= m_members.size())
-			throw Population_exception("Invalid indx of dropped member in population during roulette wheel.");
+			throw Population_exception("Index of dropped member must be contained in population.");
 
 		if(m_members.size() == 1) return 0;
+		else if(m_members.size() == 2)
+		{
+			for (unsigned long i = 0; i < 2; i++) 
+			{
+				if(i != dropped_memb_indx) return i;
+			}
+		}
 
-		const double total_fitness = static_cast<double>(m_members.size()) - m_members[dropped_memb_indx].m_dFitness;
+		double total_fitness = 0.0;
+
+		for (unsigned long i = 0; i < m_members.size(); i++) 
+		{
+			total_fitness += m_members[i].m_dFitness;
+		}
+
+		total_fitness -= m_members[dropped_memb_indx].m_dFitness;
+		
 		const double rand_num = random_double(0.0, total_fitness);
 		
 		double offset = 0.0;
@@ -235,14 +260,22 @@ namespace Neural_networks
 	// perform roulette wheel selection of population member
 	unsigned long Population::roulette_wheel(const std::set<const unsigned long>& dropped_memb_indices) const
 	{
-		std::set<const unsigned long>::iterator it = --dropped_memb_indices.end();
-		if(*it > m_members.size()) throw Population_exception("Invalid indx of dropped member in population during roulette wheel.");
-
-		double total_fitness = static_cast<double>(m_members.size());
-	
-		for (std::set<const unsigned long>::iterator it = dropped_memb_indices.begin(); it != dropped_memb_indices.end(); it++) 
+		if(dropped_memb_indices.size() > 0)
 		{
-			total_fitness -= m_members[*it].m_dFitness;
+			// iterator pointing to the last (the largest) value contained in set
+			if(*(--dropped_memb_indices.end()) >= m_members.size()) throw Population_exception("Index of dropped member must be contained in population.");
+		}
+
+		if(m_members.size() == 1) return 0;
+
+		double total_fitness = 0.0;
+	
+		for (unsigned long i = 0; i < m_members.size(); i++) 
+		{
+			if(dropped_memb_indices.find(i) == dropped_memb_indices.end()) // index NOT contained in set
+			{
+				total_fitness += m_members[i].m_dFitness;
+			}
 		}
 	
 		const double rand_num = random_double(0.0, total_fitness);
@@ -252,7 +285,7 @@ namespace Neural_networks
 	
 		for (unsigned long i = 0; i < m_members.size(); i++) 
 		{
-			if(dropped_memb_indices.find(i) != dropped_memb_indices.end())
+			if(dropped_memb_indices.find(i) == dropped_memb_indices.end()) // if index NOT contained in set
 			{
 				offset += m_members[i].m_dFitness;
 				if (rand_num <= offset) 
