@@ -6,7 +6,7 @@ namespace Linear_algebra
 	Matrix2D::Matrix2D(const double _11, const double _12, const double _13,
 		const double _21, const double _22, const double _23,
 		const double _31, const double _32, const double _33) :
-	m_d11(_11), m_d12(_12), m_d13(_13),
+		m_d11(_11), m_d12(_12), m_d13(_13),
 		m_d21(_21), m_d22(_22), m_d23(_23),
 		m_d31(_31), m_d32(_32), m_d33(_33)
 	{

@@ -68,7 +68,6 @@ namespace Linear_algebra
 
 
 	//------------------------- Vec2DLength -----------------------------
-	//
 	//	returns the length of a 2D vector
 	//--------------------------------------------------------------------
 	double Vector2D::length(void)
@@ -77,7 +76,6 @@ namespace Linear_algebra
 	}
 
 	//------------------------- Vec2DNormalize -----------------------------
-	//
 	//	normalizes a 2D Vector
 	//--------------------------------------------------------------------
 	void Vector2D::normalize(void)
@@ -89,7 +87,6 @@ namespace Linear_algebra
 	}
 
 	//------------------------- Vec2DDot --------------------------
-	//
 	//	calculates the dot product
 	//--------------------------------------------------------------------
 	double dot(const Vector2D& v1, const Vector2D& v2)
@@ -98,7 +95,6 @@ namespace Linear_algebra
 	}
 
 	//------------------------ Vec2DSign --------------------------------
-	//
 	//  returns positive if v2 is clockwise of v1, minus if anticlockwise
 	//-------------------------------------------------------------------
 	double sign(const Vector2D& v1, const Vector2D& v2)

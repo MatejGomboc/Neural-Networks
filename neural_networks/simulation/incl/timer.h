@@ -1,7 +1,7 @@
 #pragma once
 
-//#include "targetver.h"
-//#define WIN32_LEAN_AND_MEAN // Exclude rarely-used stuff from Windows headers.
+#include "targetver.h"
+#define WIN32_LEAN_AND_MEAN // Exclude rarely-used stuff from Windows headers.
 #include <windows.h>
 
 
@@ -24,7 +24,7 @@ namespace Simulation
 	public:
 		//ctors
 		Timer();
-		Timer(const float fps);
+		explicit Timer(const float fps);
 
 		//starts the timer
 		void start();
@@ -35,8 +35,10 @@ namespace Simulation
 		//only use this after a call to the above
 		double getTimeElapsed() const;
 
+		//returns time elapsed since last call to this function
 		double timeElapsed();
 
+		//only use this after a call to the above
 		float getFPS() const;
 	};
 };

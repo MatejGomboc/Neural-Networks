@@ -10,9 +10,6 @@
 namespace Simulation
 {
 	//---------------------- default constructor ------------------------------
-	//
-	//-------------------------------------------------------------------------
-
 	Timer::Timer() :
 		m_fFPS(0),
 		m_dTimeElapsed(0.0),
@@ -29,11 +26,8 @@ namespace Simulation
 
 
 	//---------------------- constructor -------------------------------------
-	//
 	//	Use to specify FPS.
-	//
 	//-------------------------------------------------------------------------
-
 	Timer::Timer(const float fps) :
 		m_fFPS(fps),
 		m_dTimeElapsed(0.0),
@@ -52,11 +46,8 @@ namespace Simulation
 
 
 	//------------------------Start()-----------------------------------------
-	//
 	//	Call this immediately prior to simulation loop. Starts the timer.
-	//
 	//--------------------------------------------------------------------------
-
 	void Timer::start()
 	{
 		//get the time
@@ -71,10 +62,8 @@ namespace Simulation
 
 
 	//-------------------------ReadyForNextFrame()-------------------------------
-	//
 	//	Returns true if it is time to move on to the next frame step. To be used if
 	//	FPS is set.
-	//
 	//----------------------------------------------------------------------------
 
 	bool Timer::readyForNextFrame()
@@ -100,11 +89,8 @@ namespace Simulation
 
 
 	//--------------------------- GetTimeElapsed --------------------------------
-	//
 	//	Only use this after a call to the above.
-	//
 	//-------------------------------------------------------------------------
-
 	double Timer::getTimeElapsed() const
 	{
 		return m_dTimeElapsed;
@@ -113,12 +99,9 @@ namespace Simulation
 
 
 	//--------------------------- TimeElapsed --------------------------------
-	//
 	//	Returns time elapsed since last call to this function. Use in main
 	//	when calculations are to be based on dt.
-	//
 	//-------------------------------------------------------------------------
-
 	double Timer::timeElapsed()
 	{
 		QueryPerformanceCounter((LARGE_INTEGER*)& m_llCurrentTime);
@@ -133,11 +116,8 @@ namespace Simulation
 
 
 	//--------------------------- GetFPS --------------------------------------
-	//
 	//	Only use this after a call to the above.
-	//
 	//-------------------------------------------------------------------------
-
 	float Timer::getFPS() const
 	{
 		return m_fFPS;

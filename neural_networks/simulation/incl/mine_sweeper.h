@@ -9,7 +9,7 @@
 
 namespace Simulation
 {
-	class Mine_sweeper : public Neural_networks::Member
+	class Mine_sweeper : private Neural_networks::Member
 	{
 	public:
 		//it's position in the world

@@ -14,11 +14,12 @@ namespace Simulation
 	private:
 		//population of minesweepers
 		std::vector<Mine_sweeper> m_sweepers;
+		//Neural_networks::Population m_population;
 
 		//population of mines
 		std::vector<Mine> m_mines;
 
-		//stores the average fitness per generation for use in graphing.
+		//stores the average fitness per generation for use in graphing
 		std::vector<double> m_vdAvgFitness;
 	
 		//cycles in current generation

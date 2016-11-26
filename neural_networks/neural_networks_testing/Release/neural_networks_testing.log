@@ -1,12 +1,42 @@
-﻿Build started 26.11.2016 14:24:17.
-     1>Project "C:\Users\user\Desktop\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
-         Touching "Release\neural_networks_testing.unsuccessfulbuild".
+﻿Build started 26.11.2016 21:02:52.
+     1>Project "G:\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\neural_networks_testing.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Release\neural_networks_testing.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"D:\Program Files\Visual Leak Detector\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\simulation\src\timer.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\linear_algebra\src\matrix2d.cpp ..\linear_algebra\src\vector2d.cpp ..\neural_networks\debug\src\debug_member.cpp ..\neural_networks\debug\src\debug_network.cpp ..\neural_networks\debug\src\debug_neuron.cpp ..\neural_networks\debug\src\debug_nn_util.cpp ..\neural_networks\debug\src\debug_output_node.cpp ..\neural_networks\debug\src\debug_population.cpp ..\neural_networks\debug\src\debug_rand_gen.cpp ..\neural_networks\src\constants.cpp ..\neural_networks\src\member.cpp ..\neural_networks\src\network.cpp ..\neural_networks\src\neural_network_exception.cpp ..\neural_networks\src\neuron.cpp ..\neural_networks\src\output_node.cpp ..\neural_networks\src\population.cpp ..\neural_networks\src\rand_gen.cpp ..\neural_networks\src\nn_util.cpp ..\simulation\src\utils.cpp main.cpp ..\restricted_range\src\restricted.cpp ..\restricted_range\src\restricted_range_exception.cpp ..\restricted_range\src\srestricted.cpp ..\simulation\src\controller.cpp ..\simulation\src\ini_params.cpp ..\simulation\src\mine.cpp ..\simulation\src\mine_sweeper.cpp ..\simulation\src\timer.cpp
+         matrix2d.cpp
+         vector2d.cpp
+         debug_member.cpp
+         debug_network.cpp
+         debug_neuron.cpp
+         debug_nn_util.cpp
+         debug_output_node.cpp
+         debug_population.cpp
+         debug_rand_gen.cpp
+         constants.cpp
+         member.cpp
+         network.cpp
+         neural_network_exception.cpp
+         neuron.cpp
+         output_node.cpp
+         population.cpp
+         rand_gen.cpp
+         nn_util.cpp
+         utils.cpp
+         main.cpp
+         Compiling...
+         restricted.cpp
+         restricted_range_exception.cpp
+         srestricted.cpp
+         controller.cpp
+         ini_params.cpp
+         mine.cpp
+         mine_sweeper.cpp
          timer.cpp
        Link:
-         D:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Release\neural_networks_testing.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Program Files\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\neural_networks_testing.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Release\neural_networks_testing.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Release\neural_networks_testing.lib" /MACHINE:X86 Release\matrix2d.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Neural-Networks\neural_networks\Release\neural_networks_testing.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\neural_networks_testing.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\Neural-Networks\neural_networks\Release\neural_networks_testing.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Neural-Networks\neural_networks\Release\neural_networks_testing.lib" /MACHINE:X86 Release\matrix2d.obj
          Release\vector2d.obj
          Release\debug_member.obj
          Release\debug_network.obj
@@ -36,14 +66,14 @@
          Release\timer.obj
          Generating code
          Finished generating code
-         neural_networks_testing.vcxproj -> C:\Users\user\Desktop\Neural-Networks\neural_networks\Release\neural_networks_testing.exe
+         neural_networks_testing.vcxproj -> G:\Neural-Networks\neural_networks\Release\neural_networks_testing.exe
        Manifest:
-         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\user\Desktop\Neural-Networks\neural_networks\Release\neural_networks_testing.exe;#1" /manifest Release\neural_networks_testing.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"G:\Neural-Networks\neural_networks\Release\neural_networks_testing.exe;#1" /manifest Release\neural_networks_testing.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Release\neural_networks_testing.unsuccessfulbuild".
          Touching "Release\neural_networks_testing.lastbuildstate".
-     1>Done Building Project "C:\Users\user\Desktop\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" (build target(s)).
+     1>Done Building Project "G:\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.43
+Time Elapsed 00:00:20.36

@@ -8,9 +8,7 @@
 namespace Simulation
 {
 	//---------------------------------------constructor---------------------
-	//
 	// Initilaize the sweepers, their brains and the mines.
-	//
 	//-----------------------------------------------------------------------
 	Controller::Controller(const Ini_params& params) :
 		m_ulTicks(0),
@@ -31,9 +29,7 @@ namespace Simulation
 
 
 	//-------------------------------------Update-----------------------------
-	//
 	// This is the main workhorse. The entire simulation is controlled from here.
-	//
 	//-------------------------------------------------------------------------
 	void Controller::update(const Ini_params& params)
 	{
