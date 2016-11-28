@@ -12,15 +12,20 @@
 #include "debug_member.h"
 #include "debug_population.h"
 
+#include "mine_sweeper.h"
 #include <memory>
 
 using namespace Neural_networks;
 
 int main(int argc, char* argv[])
 {
-	std::vector<std::shared_ptr<Member>> members;
-	members.push_back(std::shared_ptr<Member>(new Member(2,2,2)));
-	Neural_networks::Population pop(members, Mutation_params());
+	std::vector<Simulation::Mine_sweeper> sweepers;
+	sweepers.push_back(Simulation::Mine_sweeper(2));
+
+	Population pop(sweepers, Mutation_params());
+
+	sweepers[0].m_dFitness = 1.0;
+	pop.m_pMembers[0]->m_dFitness = 0.5;
 
 	while(true);
 

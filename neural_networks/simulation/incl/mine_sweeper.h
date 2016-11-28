@@ -9,9 +9,9 @@
 
 namespace Simulation
 {
-	class Mine_sweeper : private Neural_networks::Member
+	class Mine_sweeper : public Neural_networks::Member
 	{
-	private:
+	public:
 		//it's position in the world
 		Linear_algebra::Vector2D m_vPosition;
 

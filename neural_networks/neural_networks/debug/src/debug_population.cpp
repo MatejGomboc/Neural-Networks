@@ -80,22 +80,22 @@ namespace Neural_networks
 
 			Population test_population(test_members, Mutation_params());
 
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
-				for(unsigned long j = 0; j < test_population.m_members[i].m_brain.m_dInputs.size(); j++)
+				for(unsigned long j = 0; j < test_population.m_pMembers[i].m_brain.m_dInputs.size(); j++)
 				{
-					test_population.m_members[i].m_brain.m_dInputs[j] = random_double(0.0, 1.0);
+					test_population.m_pMembers[i].m_brain.m_dInputs[j] = random_double(0.0, 1.0);
 				}
 
-				for(unsigned long j = 0; j < test_population.m_members[i].m_brain.m_neurons.size(); j++)
+				for(unsigned long j = 0; j < test_population.m_pMembers[i].m_brain.m_neurons.size(); j++)
 				{
-					test_population.m_members[i].m_brain.m_neurons[j].m_dOutput = random_double(0.0, 1.0);
+					test_population.m_pMembers[i].m_brain.m_neurons[j].m_dOutput = random_double(0.0, 1.0);
 				}
 			}
 
 			test_population.calculate_outputs();
 
-			test_population.m_members.clear();
+			test_population.m_pMembers.clear();
 
 			// if no members in population
 			try
@@ -130,31 +130,31 @@ namespace Neural_networks
 
 			Population test_population(test_members, Mutation_params());
 
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
-				test_population.m_members[i].m_dFitness = random_double(0.0, 1.0);
+				test_population.m_pMembers[i].m_dFitness = random_double(0.0, 1.0);
 			}
 
 			// test simple roulette wheel
 
-			unsigned long indx = test_population.m_members.size();
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			unsigned long indx = test_population.m_pMembers.size();
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
 				indx = test_population.roulette_wheel();
 
-				if(indx >= test_population.m_members.size())
+				if(indx >= test_population.m_pMembers.size())
 					throw Population_exception("Error in roulette wheel function.");
 			}
 
 			// test roulette wheel with one dropped index
 
-			const unsigned long dropped_indx = random_unsigned_long(0, test_population.m_members.size() - 1);
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			const unsigned long dropped_indx = random_unsigned_long(0, test_population.m_pMembers.size() - 1);
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
 				indx = test_population.roulette_wheel(dropped_indx);
 
-				if((indx >= test_population.m_members.size()) ||
-					((indx == dropped_indx) && (test_population.m_members.size() > 1)))
+				if((indx >= test_population.m_pMembers.size()) ||
+					((indx == dropped_indx) && (test_population.m_pMembers.size() > 1)))
 					throw Population_exception("Error in roulette wheel function.");
 			}
 
@@ -162,19 +162,19 @@ namespace Neural_networks
 
 			std::set<const unsigned long> dropped_indices;
 
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
 				if(random_double(0.0, 1.0) <= 0.5) dropped_indices.insert(i);
 			}
 
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
 				indx = test_population.roulette_wheel(dropped_indices);
 
-				if((indx >= test_population.m_members.size()) ||
+				if((indx >= test_population.m_pMembers.size()) ||
 					((dropped_indices.find(indx) != dropped_indices.end())
-					&& (test_population.m_members.size() > 1)
-					&& (test_population.m_members.size() != dropped_indices.size())))
+					&& (test_population.m_pMembers.size() > 1)
+					&& (test_population.m_pMembers.size() != dropped_indices.size())))
 					throw Population_exception("Error in roulette wheel function.");
 			}
 		}
@@ -199,9 +199,9 @@ namespace Neural_networks
 
 			Population test_population(test_members, Mutation_params());
 
-			for(unsigned long i = 0; i < test_population.m_members.size(); i++)
+			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
-				test_population.m_members[i].m_dFitness = random_double(0.0, 1.0);
+				test_population.m_pMembers[i].m_dFitness = random_double(0.0, 1.0);
 			}
 
 

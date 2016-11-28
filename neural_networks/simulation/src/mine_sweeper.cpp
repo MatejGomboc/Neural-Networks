@@ -13,7 +13,6 @@
 using namespace Linear_algebra;
 using namespace Neural_networks;
 
-
 namespace Simulation
 {
 	//-----------------------------------constructor-------------------------
