@@ -22,22 +22,19 @@ namespace Neural_networks
 	}
 
 
-	template <typename T>
-	Population::Population(std::vector<T>& members, const Mutation_params& mutation_params) :
+	Population::Population(std::vector<std::shared_ptr<Member>>& members, const Mutation_params& mutation_params) :
 		m_mutation_params(mutation_params)
 	{
 		if (members.size() <= 0) throw Population_exception("Number of members in population cannot be zero.");
 
 		for(unsigned long i = 0; i < members.size(); i++)
 		{
-			members[i].test();
-			m_pMembers.push_back(std::shared_ptr<Member>(&members[i]));
+			members[i]->test();
 		}
+
+		m_pMembers.reserve(members.size());
+		m_pMembers.swap(members);
 	}
-
-
-	template Population::Population(std::vector<Member>& members, const Mutation_params& mutation_params);
-	template Population::Population(std::vector<Simulation::Mine_sweeper>& members, const Mutation_params& mutation_params);
 
 
 	Population::~Population(void)

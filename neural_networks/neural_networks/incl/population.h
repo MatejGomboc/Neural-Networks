@@ -44,10 +44,9 @@ namespace Neural_networks
 		std::vector<std::shared_ptr<Member>> m_pMembers; // array of population members
 	public:
 		
-		template <typename T>
-		Population(std::vector<T>& members, const Mutation_params& mutation_params);
-		
+		Population(std::vector<std::shared_ptr<Member>>& members, const Mutation_params& mutation_params);
 		~Population(void);
+
 		void test(void) const; // check population for errors
 		void calculate_outputs(void); // calculate output values of members
 		void mutate(void); // mutate members of population

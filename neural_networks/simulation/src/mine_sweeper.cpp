@@ -27,6 +27,20 @@ namespace Simulation
 	}
 
 
+	std::vector<std::shared_ptr<Member>> Mine_sweeper::convert_to_pointers(std::vector<Mine_sweeper>& sweepers)
+	{
+		std::vector<std::shared_ptr<Member>> p_members;
+		p_members.reserve(sweepers.size());
+
+		for (unsigned long i = 0; i < sweepers.size(); i++)
+		{
+			p_members.push_back(std::shared_ptr<Member>(&sweepers[i]));
+		}
+
+		return p_members;
+	}
+
+
 	//-------------------------------------------reset()--------------------
 	//	Resets the sweeper's position, score and rotation.
 	//----------------------------------------------------------------------

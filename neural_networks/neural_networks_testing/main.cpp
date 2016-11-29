@@ -12,17 +12,16 @@
 #include "debug_member.h"
 #include "debug_population.h"
 
-#include "mine_sweeper.h"
 #include <memory>
 
 using namespace Neural_networks;
 
 int main(int argc, char* argv[])
 {
-	std::vector<Simulation::Mine_sweeper> sweepers;
-	sweepers.push_back(Simulation::Mine_sweeper(2));
+	std::vector<Member> sweepers;
+	sweepers.push_back(Member(1,1,1));
 
-	Population pop(sweepers, Mutation_params());
+	Population pop(Member::convert_to_pointers(sweepers), Mutation_params());
 
 	sweepers[0].m_dFitness = 1.0;
 	pop.m_pMembers[0]->m_dFitness = 0.5;
