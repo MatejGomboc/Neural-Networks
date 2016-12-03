@@ -2,12 +2,22 @@
 
 #include "network.h"
 #include "srestricted.h"
+#include "neural_network_exception.h"
 #include <vector>
 #include <memory>
 
 
 namespace Neural_networks
 {
+	class Member_exception: public Neural_network_exception
+	{
+	public:
+		explicit Member_exception(const std::string message)
+			: Neural_network_exception(message)
+		{
+		}
+	};
+
 	class Member
 	{
 	public:
@@ -18,6 +28,7 @@ namespace Neural_networks
 		virtual void reset(void); // reset member's fitness value and brain
 		virtual void test(void) const; // test member's brain
 
+		// used while creating new population
 		static std::vector<std::shared_ptr<Member>> convert_to_pointers(std::vector<Member>& members);
 	};
 };

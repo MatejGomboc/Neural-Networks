@@ -38,7 +38,7 @@ namespace Neural_networks
 
 	Neuron::~Neuron(void)
 	{
-		m_vdWeights.clear();
+		//m_vdWeights.clear();
 	}
 
 

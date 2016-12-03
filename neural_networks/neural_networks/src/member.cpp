@@ -24,6 +24,7 @@ namespace Neural_networks
 	}
 
 
+	// used while creating new population
 	std::vector<std::shared_ptr<Member>> Member::convert_to_pointers(std::vector<Member>& members)
 	{
 		std::vector<std::shared_ptr<Member>> p_members;

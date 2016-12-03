@@ -40,10 +40,10 @@ namespace Neural_networks
 
 	Network::~Network(void)
 	{
-		m_dInputs.clear();
+		/*m_dInputs.clear();
 		m_dOutputs.clear();
 		m_neurons.clear();
-		m_output_nodes.clear();
+		m_output_nodes.clear();*/
 	}
 
 
