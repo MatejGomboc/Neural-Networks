@@ -12,25 +12,13 @@
 #include "debug_member.h"
 #include "debug_population.h"
 
-#include <memory>
-
 using namespace Neural_networks;
 
 int main(int argc, char* argv[])
 {
-	/*std::vector<Member> sweepers;
-	sweepers.push_back(Member(1,1,1));
-
-	Population pop(Member::convert_to_pointers(sweepers), Mutation_params());
-
-	sweepers[0].m_dFitness = 1.0;
-	pop.m_pMembers[0]->m_dFitness = 0.5;
-
-	while(true);*/
-
 	while(true)
 	{
-		/*std::cout << "Started debuging nn_util." << std::endl;
+		std::cout << "Started debuging nn_util." << std::endl;
 		try
 		{
 			Debug::debug_nn_util();
@@ -101,7 +89,7 @@ int main(int argc, char* argv[])
 			std::cout << ex.what() << std::endl;
 			while(true);
 		}
-		std::cout << "Debuging Member class successful." << std::endl << std::endl;*/
+		std::cout << "Debuging Member class successful." << std::endl << std::endl;
 
 		std::cout << "Started debuging Population class." << std::endl;
 		try

@@ -23,7 +23,7 @@ namespace Neural_networks
 
 	Output_node::~Output_node(void)
 	{
-		//m_vdWeights.clear();
+		m_vdWeights.clear();
 	}
 
 

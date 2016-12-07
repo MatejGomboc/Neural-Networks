@@ -22,19 +22,4 @@ namespace Neural_networks
 	{
 		m_brain.test();
 	}
-
-
-	// used while creating new population
-	std::vector<std::shared_ptr<Member>> Member::convert_to_pointers(std::vector<Member>& members)
-	{
-		std::vector<std::shared_ptr<Member>> p_members;
-		p_members.reserve(members.size());
-
-		for (unsigned long i = 0; i < members.size(); i++)
-		{
-			p_members.push_back(std::shared_ptr<Member>(&members[i]));
-		}
-
-		return p_members;
-	}
 };

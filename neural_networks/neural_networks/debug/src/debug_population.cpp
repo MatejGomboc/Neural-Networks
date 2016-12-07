@@ -20,33 +20,31 @@ namespace Neural_networks
 			unsigned long N_neurons = random_unsigned_long(1, 10);
 			unsigned long N_outputs = random_unsigned_long(1, 10);
 			
-			std::vector<Member> test_members1;
-			test_members1.reserve(N_members);
+			std::vector<std::shared_ptr<Member>> p_test_members1;
+			p_test_members1.reserve(N_members);
 
 			for(unsigned long i = 0; i < N_members; i++)
 			{
-				test_members1.push_back(Member(N_inputs, N_neurons, N_outputs));
+				p_test_members1.push_back(std::shared_ptr<Member>(new Member(N_inputs, N_neurons, N_outputs)));
 			}
 
-			Population test_population1(Member::convert_to_pointers(test_members1), Mutation_params());
-			test_population1.test();
-			test_population1.m_pMembers.clear();
+			Population test_population1(p_test_members1, Mutation_params());
 			test_population1.test();
 
 			// if zero members
-			std::vector<Member> test_members2;
-			test_members2.clear();
+			std::vector<std::shared_ptr<Member>> p_test_members2;
+			p_test_members2.clear();
 
-			//try
-			//{
-			//	// this must throw an exception
-			//	Population test_population2(Member::convert_to_pointers(test_members2), Mutation_params());
-			//}
-			//catch(...)
-			//{
-			//	return;
-			//}
-			//throw Population_exception("Zero members in population. Check constructor.");
+			try
+			{
+				// this must throw an exception
+				Population test_population2(p_test_members2, Mutation_params());
+			}
+			catch(...)
+			{
+				return;
+			}
+			throw Population_exception("Zero members in population. Check constructor.");
 		}
 
 
@@ -72,15 +70,15 @@ namespace Neural_networks
 			unsigned long N_neurons = random_unsigned_long(1, 10);
 			unsigned long N_outputs = random_unsigned_long(1, 10);
 			
-			std::vector<Member> test_members;
+			std::vector<std::shared_ptr<Member>> test_members;
 			test_members.reserve(N_members);
 
 			for(unsigned long i = 0; i < N_members; i++)
 			{
-				test_members.push_back(Member(N_inputs, N_neurons, N_outputs));
+				test_members.push_back(std::shared_ptr<Member>(new Member(N_inputs, N_neurons, N_outputs)));
 			}
 
-			Population test_population(Member::convert_to_pointers(test_members), Mutation_params());
+			Population test_population(test_members, Mutation_params());
 
 			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
@@ -122,15 +120,15 @@ namespace Neural_networks
 			unsigned long N_neurons = random_unsigned_long(1, 10);
 			unsigned long N_outputs = random_unsigned_long(1, 10);
 			
-			std::vector<Member> test_members;
+			std::vector<std::shared_ptr<Member>> test_members;
 			test_members.reserve(N_members);
 
 			for(unsigned long i = 0; i < N_members; i++)
 			{
-				test_members.push_back(Member(N_inputs, N_neurons, N_outputs));
+				test_members.push_back(std::shared_ptr<Member>(new Member(N_inputs, N_neurons, N_outputs)));
 			}
 
-			Population test_population(Member::convert_to_pointers(test_members), Mutation_params());
+			Population test_population(test_members, Mutation_params());
 
 			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
@@ -191,15 +189,15 @@ namespace Neural_networks
 			unsigned long N_neurons = random_unsigned_long(1, 10);
 			unsigned long N_outputs = random_unsigned_long(1, 10);
 			
-			std::vector<Member> test_members;
+			std::vector<std::shared_ptr<Member>> test_members;
 			test_members.reserve(N_members);
 
 			for(unsigned long i = 0; i < N_members; i++)
 			{
-				test_members.push_back(Member(N_inputs, N_neurons, N_outputs));
+				test_members.push_back(std::shared_ptr<Member>(new Member(N_inputs, N_neurons, N_outputs)));
 			}
 
-			Population test_population(Member::convert_to_pointers(test_members), Mutation_params());
+			Population test_population(test_members, Mutation_params());
 
 			for(unsigned long i = 0; i < test_population.m_pMembers.size(); i++)
 			{
@@ -220,10 +218,10 @@ namespace Neural_networks
 		void debug_population(void)
 		{
 			test_constructor();
-			//test_mutate_value();
-			//test_calculation();
-			//test_roulette_wheel();
-			//test_mutation_mating();
+			test_mutate_value();
+			test_calculation();
+			test_roulette_wheel();
+			test_mutation_mating();
 		}
 	};
 };

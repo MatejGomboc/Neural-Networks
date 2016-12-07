@@ -29,8 +29,6 @@ namespace Simulation
 	public:
 		Mine_sweeper(const unsigned long N_neurons);
 
-		static std::vector<std::shared_ptr<Member>> convert_to_pointers(std::vector<Mine_sweeper>& members);
-
 		virtual void reset(void);
 
 		//updates the NN with information from the sweeper's enviroment

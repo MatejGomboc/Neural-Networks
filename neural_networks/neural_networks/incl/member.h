@@ -27,8 +27,5 @@ namespace Neural_networks
 		Member(const unsigned long N_inputs, const unsigned long N_neurons, const unsigned long N_outputs);
 		virtual void reset(void); // reset member's fitness value and brain
 		virtual void test(void) const; // test member's brain
-
-		// used while creating new population
-		static std::vector<std::shared_ptr<Member>> convert_to_pointers(std::vector<Member>& members);
 	};
 };
