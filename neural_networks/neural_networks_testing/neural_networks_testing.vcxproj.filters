@@ -49,6 +49,12 @@
     <Filter Include="Source Files\linear_algebra">
       <UniqueIdentifier>{7b9a74e3-b540-4071-aa46-6a5b3d8ad424}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tiny_xml_2">
+      <UniqueIdentifier>{b060dd06-e6d4-4daa-a103-890de4fcc14f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tiny_xml_2">
+      <UniqueIdentifier>{75e52143-5851-455b-b69a-5d601be55d28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="rand_test_output_histogram_double.csv">
@@ -146,6 +152,9 @@
     <ClInclude Include="..\neural_networks\debug\incl\debug_nn_util.h">
       <Filter>Header Files\neural_networks\debug</Filter>
     </ClInclude>
+    <ClInclude Include="..\tinyxml2\tinyxml2.h">
+      <Filter>Header Files\tiny_xml_2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\linear_algebra\src\matrix2d.cpp">
@@ -234,6 +243,9 @@
     </ClCompile>
     <ClCompile Include="..\neural_networks\debug\src\debug_nn_util.cpp">
       <Filter>Source Files\neural_networks\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyxml2\tinyxml2.cpp">
+      <Filter>Source Files\tiny_xml_2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

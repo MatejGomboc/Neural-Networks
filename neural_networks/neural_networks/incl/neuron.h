@@ -5,6 +5,7 @@
 #include "restricted.h"
 #include "srestricted.h"
 #include "neural_network_exception.h"
+#include "tinyxml2.h"
 
 
 namespace Neural_networks
@@ -42,6 +43,8 @@ namespace Neural_networks
 
 		void reset(void); // reset neuron's output and temp_output
 		void test(const unsigned long N_weights) const; // test neuron for correct number of weights and corect threshold value
+
+		static Neuron XML_deserialize(tinyxml2::XMLElement* xml_element);
 	private:
 		// neuron's activation function
 		static double activation_function(const double summ, const double steepness, const double treshold, const double simetricity);

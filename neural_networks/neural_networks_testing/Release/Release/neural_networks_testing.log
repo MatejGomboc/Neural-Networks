@@ -1,0 +1,51 @@
+﻿Build started 17.12.2016 19:57:41.
+     1>Project "G:\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\Release\neural_networks_testing.unsuccessfulbuild".
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\Release\\" /Fd"Release\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\neural_networks\src\neuron.cpp
+         neuron.cpp
+     1>..\neural_networks\src\neuron.cpp(114): warning C4101: 'treshold' : unreferenced local variable
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Release\neural_networks_testing.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Release\neural_networks_testing.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\Neural-Networks\neural_networks\neural_networks_testing\Release\neural_networks_testing.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Release\neural_networks_testing.lib" /MACHINE:X86 Release\Release\matrix2d.obj
+         Release\Release\vector2d.obj
+         Release\Release\debug_member.obj
+         Release\Release\debug_network.obj
+         Release\Release\debug_neuron.obj
+         Release\Release\debug_nn_util.obj
+         Release\Release\debug_output_node.obj
+         Release\Release\debug_population.obj
+         Release\Release\debug_rand_gen.obj
+         Release\Release\constants.obj
+         Release\Release\member.obj
+         Release\Release\network.obj
+         Release\Release\neural_network_exception.obj
+         Release\Release\neuron.obj
+         Release\Release\output_node.obj
+         Release\Release\population.obj
+         Release\Release\rand_gen.obj
+         Release\Release\nn_util.obj
+         Release\Release\utils.obj
+         Release\Release\tinyxml2.obj
+         Release\Release\main.obj
+         Release\Release\restricted.obj
+         Release\Release\restricted_range_exception.obj
+         Release\Release\srestricted.obj
+         Release\Release\controller.obj
+         Release\Release\ini_params.obj
+         Release\Release\mine.obj
+         Release\Release\mine_sweeper.obj
+         Release\Release\timer.obj
+         Generating code
+         Finished generating code
+         neural_networks_testing.vcxproj -> G:\Neural-Networks\neural_networks\neural_networks_testing\Release\neural_networks_testing.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"Release\neural_networks_testing.exe;#1" /manifest Release\Release\neural_networks_testing.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\Release\neural_networks_testing.unsuccessfulbuild".
+         Touching "Release\Release\neural_networks_testing.lastbuildstate".
+     1>Done Building Project "G:\Neural-Networks\neural_networks\neural_networks_testing\neural_networks_testing.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:11.01

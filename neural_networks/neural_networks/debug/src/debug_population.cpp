@@ -31,6 +31,15 @@ namespace Neural_networks
 			Population test_population1(p_test_members1, Mutation_params());
 			test_population1.test();
 
+			p_test_members1.push_back(std::shared_ptr<Member>(new Member(N_inputs, N_neurons, N_outputs)));
+			if(p_test_members1.size() != test_population1.m_pMembers.size()) throw(new std::exception("Error in Population's constructor."));
+			
+			test_population1.m_pMembers[0]->m_dFitness = random_double(0.0, 1.0);
+			if(test_population1.m_pMembers[0]->m_dFitness != p_test_members1[0]->m_dFitness) throw(new std::exception("Error in Population's constructor."));
+			
+			p_test_members1[0]->m_dFitness = random_double(0.0, 1.0);
+			if(test_population1.m_pMembers[0]->m_dFitness != p_test_members1[0]->m_dFitness) throw(new std::exception("Error in Population's constructor."));
+
 			// if zero members
 			std::vector<std::shared_ptr<Member>> p_test_members2;
 			p_test_members2.clear();

@@ -22,18 +22,17 @@ namespace Neural_networks
 	}
 
 
-	Population::Population(std::vector<std::shared_ptr<Member>>& members, const Mutation_params& mutation_params) :
+	Population::Population(std::vector<std::shared_ptr<Member>>& p_members, const Mutation_params& mutation_params) :
+		m_pMembers(p_members),
 		m_mutation_params(mutation_params)
 	{
-		if (members.size() <= 0) throw Population_exception("Number of members in population cannot be zero.");
+		if (m_pMembers.size() <= 0) throw Population_exception("Number of members in population cannot be zero.");
 
-		for(unsigned long i = 0; i < members.size(); i++)
+		for(unsigned long i = 0; i < p_members.size(); i++)
 		{
-			members[i]->test();
+			if(m_pMembers[i] == nullptr) throw Population_exception("Not a pointer to a member of population.");
+			m_pMembers[i]->test();
 		}
-
-		m_pMembers.reserve(members.size());
-		m_pMembers.swap(members);
 	}
 
 

@@ -43,7 +43,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir);$(ProjectDir)\..\simulation\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\linear_algebra\incl;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\boost_1_62_0;$(ProjectDir)\..\tinyxml2;$(ProjectDir);$(ProjectDir)\..\simulation\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\linear_algebra\incl;$(IncludePath)</IncludePath>
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(Configuration)\</IntDir>
+    <ExtensionsToDeleteOnClean>*.csv;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,6 +104,7 @@
     <ClInclude Include="..\neural_networks\incl\rand_gen.h" />
     <ClInclude Include="..\neural_networks\incl\nn_util.h" />
     <ClInclude Include="..\simulation\incl\utils.h" />
+    <ClInclude Include="..\tinyxml2\tinyxml2.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="..\restricted_range\incl\restricted.h" />
     <ClInclude Include="..\restricted_range\incl\restricted_range_exception.h" />
@@ -135,6 +139,7 @@
     <ClCompile Include="..\neural_networks\src\rand_gen.cpp" />
     <ClCompile Include="..\neural_networks\src\nn_util.cpp" />
     <ClCompile Include="..\simulation\src\utils.cpp" />
+    <ClCompile Include="..\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\restricted_range\src\restricted.cpp" />
     <ClCompile Include="..\restricted_range\src\restricted_range_exception.cpp" />
