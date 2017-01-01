@@ -39,16 +39,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)\..\tinyxml2;$(ProjectDir)\..\boost_lib\boost_1_62_0;$(ProjectDir)\..\linear_algebra\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\simulation\incl;$(ProjectDir);$(IncludePath)</IncludePath>
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)\..\tinyxml2;D:\boost_1_62_0;$(ProjectDir)\..\linear_algebra\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\simulation\incl;$(ProjectDir);$(IncludePath)</IncludePath>
+    <OutDir>$(Configuration)\bin\</OutDir>
+    <IntDir>$(Configuration)\obj\</IntDir>
     <ExtensionsToDeleteOnClean>*.csv;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)\..\boost_lib\boost_1_62_0;$(ProjectDir)\..\tinyxml2;$(ProjectDir);$(ProjectDir)\..\simulation\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\linear_algebra\incl;$(IncludePath)</IncludePath>
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\$(Configuration)\</IntDir>
+    <IncludePath>D:\boost_1_62_0;$(ProjectDir)\..\tinyxml2;$(ProjectDir);$(ProjectDir)\..\simulation\incl;$(ProjectDir)\..\restricted_range\incl;$(ProjectDir)\..\neural_networks\debug\incl;$(ProjectDir)\..\neural_networks\incl;$(ProjectDir)\..\linear_algebra\incl;$(IncludePath)</IncludePath>
+    <OutDir>$(Configuration)\bin\</OutDir>
+    <IntDir>$(Configuration)\obj\</IntDir>
     <ExtensionsToDeleteOnClean>*.csv;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
