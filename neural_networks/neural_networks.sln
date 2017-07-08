@@ -1,18 +1,55 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_networks_testing", "neural_networks_testing\neural_networks_testing.vcxproj", "{C66DD050-7F1A-453A-A3E5-7F074A266491}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_networks_dll_project", "neural_networks_dll_project\neural_networks_dll_project.vcxproj", "{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "neural_networks_test_project", "neural_networks_test_project\neural_networks_test_project.csproj", "{A6B4049C-D001-40C0-A50A-01C27579671B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD} = {95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neural_networks_debug_project", "neural_networks_debug_project\neural_networks_debug_project.vcxproj", "{315C660E-3659-4E6A-9CFD-F81D8521F112}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|Win32 = Debug|Win32
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|Win32 = Release|Win32
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Debug|Win32.Build.0 = Debug|Win32
-		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Release|Win32.ActiveCfg = Release|Win32
-		{C66DD050-7F1A-453A-A3E5-7F074A266491}.Release|Win32.Build.0 = Release|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Debug|Win32.Build.0 = Debug|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Release|Win32.ActiveCfg = Release|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Release|Win32.Build.0 = Release|Win32
+		{95D72F84-EC6E-41D8-ACD9-93C590C1A3BD}.Release|x86.ActiveCfg = Release|Win32
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Debug|Win32.ActiveCfg = Debug|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Debug|x86.ActiveCfg = Debug|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Debug|x86.Build.0 = Debug|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Release|Win32.ActiveCfg = Release|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Release|x86.ActiveCfg = Release|x86
+		{A6B4049C-D001-40C0-A50A-01C27579671B}.Release|x86.Build.0 = Release|x86
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Debug|Win32.ActiveCfg = Debug|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Debug|Win32.Build.0 = Debug|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Debug|x86.ActiveCfg = Debug|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Release|Win32.ActiveCfg = Release|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Release|Win32.Build.0 = Release|Win32
+		{315C660E-3659-4E6A-9CFD-F81D8521F112}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
